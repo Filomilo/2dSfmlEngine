@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <queue>
 #include <stack>
 #include <stdexcept>
@@ -7,9 +8,15 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/Vertex.hpp>
 
+#include "Transformable.h"
+#include "Updatable.h"
+
 
 class PrimitiveRenderer :
-    public sf::Drawable
+    public sf::Drawable,
+    Transformable,
+    Updatable
+
 {
 protected:
 
@@ -17,11 +24,14 @@ protected:
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override
     {
-        target.draw(&pixels[0], pixels.size(), renderType);
+
+    	target.draw(&pixels[0], pixels.size(), renderType);
     }
     std::vector<sf::Vertex> pixels;
     sf::Color color;
-    
+    sf::Vector2f originPoint;
+
+
 public:
     void addPixel(float x, float y, sf::Color color)
     {
@@ -51,14 +61,33 @@ public:
     {
 	    renderType = render_type;
     }
+
+    void centerOrigin()
+    {
+        int i=0;
+        sf::Vector2f avg;
+	    for (sf::Vertex element : pixels)
+	    {
+            i++;
+            avg += element.position;
+            
+	    }
+        avg.x /= i;
+        avg.y /= i;
+        originPoint = avg;
+    }
+
+
+
+
+
     void boundry_fill(sf::Vector2i Pos,sf::Vector2i leftCronerBoundery, sf::Vector2i rightCornerBoundery , sf::Color fill_color, sf::Color boundry_color)
     {
         ///TODO:: implent bounder and flood fill
 
 
 
-
-
+        /*
 
 
 
@@ -135,9 +164,50 @@ public:
 
 
         delete[] array;
+        */
+
 
 
     }
 
+    void move(sf::Vector2f offset) override
+    {
+        originPoint += offset;
+       for(int i=0;i<pixels.size();i++)
+       {
+           pixels[i] = sf::Vertex(pixels[i].position+offset, pixels[i].color);
+       }
+    }
+    void scale(sf::Vector2f offset) override 
+    {
+        sf::Vector2f offsetVector;
+        for (int i = 0; i < pixels.size(); i++)
+        {
+            offsetVector = pixels[i].position-originPoint;
+            offsetVector.x *= offset.x;
+            offsetVector.y *= offset.y;
+            pixels[i] = sf::Vertex( offsetVector + originPoint, pixels[i].color);
+        }
+
+    }
+    void rotate(float degreee) override
+    {
+        sf::Vector2f offsetVector;
+        for (int i = 0; i < pixels.size(); i++)
+        {
+            offsetVector.x = originPoint.x + (pixels[i].position.x - originPoint.x) * cos(degreee) - (pixels[i].position.y - originPoint.y) * sin(degreee);
+            offsetVector.y = originPoint.y + (pixels[i].position.x - originPoint.x) * sin(degreee) + (pixels[i].position.y - originPoint.y) * cos(degreee);
+
+            pixels[i] = sf::Vertex(offsetVector , pixels[i].color);
+        }
+    }
+
+    void update(sf::Time timeElpased) override
+    {
+        std::cout << originPoint.x<<", "<<originPoint.y << std::endl;
+       // move(sf::Vector2f(100* timeElpased.asSeconds(), 100* timeElpased.asSeconds()));
+       // scale(sf::Vector2f(1.02 , 1.01));
+        rotate(0.1 * timeElpased.asSeconds());
+    }
 };
 

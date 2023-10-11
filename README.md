@@ -17,3 +17,4 @@
 * dodano klase Elpise  rsujaca elpise metoda w insturkcji
 * Doano metode Polygon rysuajca fidure przez prze podano punkty
 * roszeorzone metode polygon o rysownie z wypelnienm
+* roszrzono obiekty punktowe o transofmracje i update

@@ -7,6 +7,7 @@
 #include <list>
 
 #include "BrokenLines.h"
+#include "Polygonal.h"
 
 class Engine
 {
@@ -22,6 +23,7 @@ private:
 
 
 	std::list<sf::Drawable*> rednerObjects;
+	std::list<Updatable*> updatableObjects;
 
 
 		void errorHandler(std::string description)
@@ -60,11 +62,13 @@ private:
 	
 	void gameUpdateLogic()
 	{
-
 	}
 	void gameUpdatePhysic()
 	{
-
+		for (Updatable* element : updatableObjects)
+		{
+			element->update(this->timeElapsed);
+		}
 	}
 
 	void render()
@@ -91,6 +95,7 @@ private:
 		sf::Clock timer;
 		while (isRunning)
 		{
+			timer.restart();
 			eventHandler();
 			gameUpdateLogic();
 			gameUpdatePhysic();
@@ -144,5 +149,9 @@ public:
 	
 
 	~Engine();
+	void addUpdatable(Polygonal* pol)
+	{
+		this->updatableObjects.push_back((Updatable*)pol);
+	}
 };
 

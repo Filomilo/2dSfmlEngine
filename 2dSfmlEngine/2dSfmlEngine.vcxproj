@@ -141,6 +141,8 @@
     <ClCompile Include="Point2D.cpp" />
     <ClCompile Include="Polygonal.cpp" />
     <ClCompile Include="PrimitiveRenderer.cpp" />
+    <ClCompile Include="Transformable.cpp" />
+    <ClCompile Include="Updatable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dependencies\SFML-2.6.0\bin\openal32.dll" />
@@ -164,6 +166,8 @@
     <ClInclude Include="Point2D.h" />
     <ClInclude Include="Polygonal.h" />
     <ClInclude Include="PrimitiveRenderer.h" />
+    <ClInclude Include="Transformable.h" />
+    <ClInclude Include="Updatable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -40,11 +40,26 @@ int main() {
 	},true)
 	
 	);
-	*/
+	*//*
 	Circle* circ = new Circle(500, 500, 10, sf::Color::White);
-	
 	engine->addRenderObject(circ);
 	circ->boundry_fill(sf::Vector2i(500, 500), sf::Vector2i(480, 480), sf::Vector2i(520, 520), sf::Color::Red, sf::Color::Blue);
+	*/
+	Polygonal* pol= new Polygonal({
+				sf::Vector2f(231,233),
+			sf::Vector2f(123,111),
+			sf::Vector2f(12,333),
+			sf::Vector2f(556,334),
+			sf::Vector2f(888,555),
+
+		}, true);
+	pol->centerOrigin();
+	engine->addRenderObject(pol);
+	engine->addUpdatable(pol);
+
+
+
+
 	engine->start();
 	//delete engine;
     return 0;
