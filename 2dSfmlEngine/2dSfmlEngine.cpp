@@ -55,7 +55,7 @@ int main() {
 		}, true);
 	pol->centerOrigin();
 	engine->addRenderObject(pol);
-	engine->addUpdatable(pol);
+	engine->addUpdatable((Updatable*)pol);
 
 
 

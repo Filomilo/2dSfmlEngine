@@ -18,3 +18,6 @@
 * Doano metode Polygon rysuajca fidure przez prze podano punkty
 * roszeorzone metode polygon o rysownie z wypelnienm
 * roszrzono obiekty punktowe o transofmracje i update
+* dodano klase player
+* doano mozliwsoc strerowania obiektem player
+* doano efekt slizgania po lodzie do player

@@ -138,6 +138,7 @@
     <ClCompile Include="Elipse.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Line.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Point2D.cpp" />
     <ClCompile Include="Polygonal.cpp" />
     <ClCompile Include="PrimitiveRenderer.cpp" />
@@ -163,6 +164,7 @@
     <ClInclude Include="Elipse.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Line.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Point2D.h" />
     <ClInclude Include="Polygonal.h" />
     <ClInclude Include="PrimitiveRenderer.h" />

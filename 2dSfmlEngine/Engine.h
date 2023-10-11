@@ -7,6 +7,7 @@
 #include <list>
 
 #include "BrokenLines.h"
+#include "Player.h"
 #include "Polygonal.h"
 
 class Engine
@@ -20,6 +21,7 @@ private:
 	bool isRunning=true;
 	sf::Time timeElapsed;
 	const std::string logFile = "Engine.log";
+	Player* player;
 
 
 	std::list<sf::Drawable*> rednerObjects;
@@ -57,6 +59,26 @@ private:
 			isRunning = false;
 			return;
 		}
+		sf::Vector2f vel;
+		float speedFactor = 100;
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
+		{
+			vel+=sf::Vector2f(speedFactor, 0);
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
+		{
+			vel += sf::Vector2f(-speedFactor, 0);
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
+		{
+			vel += sf::Vector2f(0, speedFactor);
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
+		{
+			vel += sf::Vector2f(0, -speedFactor);
+		}
+		player->applyVelocity(vel * timeElapsed.asSeconds());
+
 		}
 
 	
@@ -125,6 +147,10 @@ public:
 
 		if (!window.isOpen())
 			errorHandler("error: creating window");
+
+		player = new Player(width / 2, height / 2, 50, 50, sf::Color::Red);
+		addRenderObject((sf::Drawable*)player);
+		addUpdatable((Updatable*)player);
 		
 	}
 
@@ -149,7 +175,7 @@ public:
 	
 
 	~Engine();
-	void addUpdatable(Polygonal* pol)
+	void addUpdatable(Updatable* pol)
 	{
 		this->updatableObjects.push_back((Updatable*)pol);
 	}
