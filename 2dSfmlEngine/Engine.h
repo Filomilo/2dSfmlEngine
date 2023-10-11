@@ -4,6 +4,9 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <fstream>
+#include <list>
+
+#include "BrokenLines.h"
 
 class Engine
 {
@@ -17,6 +20,8 @@ private:
 	sf::Time timeElapsed;
 	const std::string logFile = "Engine.log";
 
+
+	std::list<sf::Drawable*> rednerObjects;
 
 
 		void errorHandler(std::string description)
@@ -35,7 +40,7 @@ private:
 	void eventHandler()
 	{
 	
-		std::cout << sf::Mouse::getPosition().x<<", "<< sf::Mouse::getPosition().y << std::endl;
+		//std::cout << sf::Mouse::getPosition().x<<", "<< sf::Mouse::getPosition().y << std::endl;
 
 		sf::Event event;
 		while (window.pollEvent(event))
@@ -67,6 +72,12 @@ private:
 
 		this->window.clear(sf::Color(10,10,10));
 
+		for (sf::Drawable* element : this->rednerObjects)
+		{
+			this->window.draw(*element);
+		}
+
+
 		window.display();
 	}
 
@@ -86,7 +97,7 @@ private:
 			render();
 			soudUpdate();
 			this->timeElapsed = timer.getElapsedTime();
-			std::cout << timeElapsed.asMilliseconds() << std::endl;
+		//	std::cout << timeElapsed.asMilliseconds() << std::endl;
 		}
 	}
 
@@ -107,7 +118,7 @@ public:
 		else
 			window.create(sf::VideoMode(width, height), "Engine");
 
-		if (window.isOpen())
+		if (!window.isOpen())
 			errorHandler("error: creating window");
 		
 	}
@@ -123,6 +134,12 @@ public:
 	{
 		gameLoop();
 		gameCleanUp();
+	}
+
+
+	void addRenderObject(sf::Drawable* object)
+	{
+		this->rednerObjects.push_back(object);
 	}
 	
 
