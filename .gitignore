@@ -361,3 +361,12 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/2dSfmlEngine/dependencies/SFML-2.6.0/lib/cmake/SFML/SFMLConfigDependencies.cmake
+/2dSfmlEngine/dependencies/SFML-2.6.0/lib/cmake/SFML/SFMLConfigVersion.cmake
+/2dSfmlEngine/dependencies/SFML-2.6.0/lib/cmake/SFML/SFMLSharedTargets-debug.cmake
+/2dSfmlEngine/dependencies/SFML-2.6.0/lib/cmake/SFML/SFMLSharedTargets-release.cmake
+/2dSfmlEngine/dependencies/SFML-2.6.0/lib/cmake/SFML/SFMLSharedTargets.cmake
+/2dSfmlEngine/dependencies/SFML-2.6.0/lib/cmake/SFML/SFMLStaticTargets-debug.cmake
+/2dSfmlEngine/dependencies/SFML-2.6.0/lib/cmake/SFML/SFMLStaticTargets-release.cmake
+/2dSfmlEngine/dependencies/SFML-2.6.0/lib/cmake/SFML/SFMLStaticTargets.cmake
+*.cmake

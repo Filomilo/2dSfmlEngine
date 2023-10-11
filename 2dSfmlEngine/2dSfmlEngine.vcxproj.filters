@@ -18,6 +18,9 @@
     <ClCompile Include="2dSfmlEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="dependencies\SFML-2.6.0\bin\openal32.dll" />
@@ -31,5 +34,10 @@
     <None Include="dependencies\SFML-2.6.0\bin\sfml-system-d-2.dll" />
     <None Include="dependencies\SFML-2.6.0\bin\sfml-window-2.dll" />
     <None Include="dependencies\SFML-2.6.0\bin\sfml-window-d-2.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

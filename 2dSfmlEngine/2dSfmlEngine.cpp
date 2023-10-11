@@ -1,22 +1,11 @@
 
 #include <SFML/Window.hpp>
-
+#include "Engine.h"
 int main() {
-    sf::Window window;
-    window.create(sf::VideoMode(800, 600), "My window");
-
-
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-    }
-
-
-
+   
+	Engine* engine = new Engine(800, 600);
+	engine->setFramerate(60);
+	engine->start();
+	//delete engine;
     return 0;
 }
