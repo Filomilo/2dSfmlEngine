@@ -21,3 +21,4 @@
 * dodano klase player
 * doano mozliwsoc strerowania obiektem player
 * doano efekt slizgania po lodzie do player
+* dodaon flood dill i boudnery filll

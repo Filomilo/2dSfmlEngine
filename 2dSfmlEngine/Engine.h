@@ -161,9 +161,9 @@ public:
 			errorHandler("error: creating window");
 
 		player = new Player(width / 2, height / 2, 50, 50,"Assets/sprie.png");
-		addRenderObject((sf::Drawable*)player);
-		addUpdatable((Updatable*)player);
-		addAnimatable((AnimatedObject*)player);
+		//addRenderObject((sf::Drawable*)player);
+		//addUpdatable((Updatable*)player);
+		//addAnimatable((AnimatedObject*)player);
 		
 	}
 

@@ -83,16 +83,8 @@ public:
 
     void boundry_fill(sf::Vector2i Pos,sf::Vector2i leftCronerBoundery, sf::Vector2i rightCornerBoundery , sf::Color fill_color, sf::Color boundry_color)
     {
-        ///TODO:: implent bounder and flood fill
-
-
-
-        /*
-
-
-
-
-
+       
+        std::cout << "test\n";
         if (this->renderType != sf::Points)
             throw std::runtime_error("Cannot fill non point objects");
         int arraywidth = rightCornerBoundery.x - leftCronerBoundery.x;
@@ -103,7 +95,7 @@ public:
         {
             int x = i % arraywidth;
             int y = i / arraywidth;
-            array[i] = sf::Vertex(sf::Vector2f(x + leftCronerBoundery.x, y + leftCronerBoundery.y), sf::Color(0,0,0,0));
+            array[i] = sf::Vertex(sf::Vector2f(x + leftCronerBoundery.x, y + leftCronerBoundery.y), sf::Color(0,255,0,0));
         
 
         }
@@ -117,58 +109,199 @@ public:
                 element.position.y < rightCornerBoundery.y
 
                 )
-            array[((int)element.position.x - leftCronerBoundery.x) * ((int)element.position.y - leftCronerBoundery.y)] = element;
-        }
-
-        std::stack<sf::Vector2i> pixelsQ;
-        pixelsQ.push(Pos);
-
-
-        while(!pixelsQ.empty())
-        {
-            sf::Vector2i pos = pixelsQ.top();
-            pixelsQ.pop();
-            sf::Vertex vert = array[(pos.x-leftCronerBoundery.x) * (pos.y-leftCronerBoundery.y)];
-			if(vert.color== boundry_color || vert.color==fill_color)
-			{
-                break;
-			}
-            array[(pos.x - leftCronerBoundery.x) * (pos.y - leftCronerBoundery.y)] = sf::Vertex(sf::Vector2f(pos.x, pos.y), fill_color);
-            if(pos.x<arraywidth)
-            {
-                pixelsQ.push(sf::Vector2i(pos.x=1,pos.y));
-            }
-            if (pos.x >0)
-            {
-                pixelsQ.push(sf::Vector2i(pos.x - 1, pos.y));
-            }
-            if (pos.y < arrayHeight)
-            {
-                pixelsQ.push(sf::Vector2i(pos.x , pos.y+1));
-            }
-            if (pos.y > 0)
-            {
-                pixelsQ.push(sf::Vector2i(pos.x , pos.y-1));
-            }
-
+            array[((int)element.position.x - leftCronerBoundery.x) + ((int)element.position.y - leftCronerBoundery.y)* arraywidth] = element;
         }
         
+        std::stack<sf::Vector2i> pixelsQ;
+        pixelsQ.push(Pos);
+        int counter = 0;
+            while (!pixelsQ.empty())
+            {
+                sf::Vector2i pos = pixelsQ.top();
+                pixelsQ.pop();
+                sf::Vector2i arrayPos = sf::Vector2i(pos.x - leftCronerBoundery.x, (pos.y - leftCronerBoundery.y));
+                int arrayIndex = arrayPos.x + arrayPos.y * arraywidth;
+                sf::Vertex vert = array[arrayIndex];
+                array[arrayIndex] = sf::Vertex(vert.position, fill_color);
+                counter++;
+                
+
+                ///// rigt X
+                if (arrayPos.x < arraywidth)
+                {
+                    if (array[arrayPos.x + 1 + arrayPos.y * arraywidth].color != boundry_color && array[arrayPos.x + 1 + arrayPos.y * arraywidth].color != fill_color)
+                    {
+                        pixelsQ.push(sf::Vector2i(pos.x + 1, pos.y));
+                    }
+                }
+
+                ///// LEft X
+                if (arrayPos.x > 0)
+                {
+                    if (array[arrayPos.x -1 + arrayPos.y * arraywidth].color != boundry_color && array[arrayPos.x - 1 + arrayPos.y * arraywidth].color != fill_color)
+                    {
+                        pixelsQ.push(sf::Vector2i(pos.x - 1, pos.y));
+                    }
+                }
+               
+                ///// UP y
+                if (arrayPos.y > 0)
+                {
+                    if (array[arrayPos.x  + (arrayPos.y - 1) * arraywidth].color != boundry_color && array[arrayPos.x + (arrayPos.y - 1) * arraywidth].color != fill_color)
+                    {
+                        pixelsQ.push(sf::Vector2i(pos.x , pos.y-1));
+                    }
+                }
+                 
+
+                 ///// DOWN y
+                if (arrayPos.y < arrayHeight)
+                {
+                    if (array[arrayPos.x + (arrayPos.y + 1) * arraywidth].color != boundry_color && array[arrayPos.x + (arrayPos.y + 1) * arraywidth].color != fill_color)
+                    {
+                        pixelsQ.push(sf::Vector2i(pos.x, pos.y + 1));
+                    }
+                }
+                std::cout << counter << " / " << pixelsQ.size() << std::endl;
+            }
+        
+            //array[50+50*arraywidth] = sf::Vertex(sf::Vector2f(50,50), sf::Color::Red);
+        
+        this->pixels.clear();
+
         for (int i = 0; i < arraywidth * arrayHeight; i++)
         {
-            int x = i % arraywidth;
-            int y = i / arraywidth;
-            sf::Color col = array[i].color;
-            array[i] = sf::Vertex(sf::Vector2f(x + leftCronerBoundery.x, y + leftCronerBoundery.y)), sf::Color(0, 0, 0, 0);
-           addPixel(array[i].position.x, array[i].position.y, array[i].color);
+            //int x = i % arraywidth;
+           // int y = i / arraywidth;
+         //   sf::Color col = array[i].color;
+           // array[i] = sf::Vertex(sf::Vector2f(x + leftCronerBoundery.x, y + leftCronerBoundery.y), col);
+            if(array[i].color.a>0)
+           addPixel(i%arraywidth+leftCronerBoundery.x, i/arraywidth+leftCronerBoundery.y, array[i].color);
         }
 
 
         delete[] array;
-        */
+        
 
 
 
     }
+
+
+
+    void flood_fill(sf::Vector2i Pos, sf::Vector2i leftCronerBoundery, sf::Vector2i rightCornerBoundery, sf::Color fill_color)
+    {
+        std::cout << "test\n";
+        if (this->renderType != sf::Points)
+            throw std::runtime_error("Cannot fill non point objects");
+        int arraywidth = rightCornerBoundery.x - leftCronerBoundery.x;
+        int arrayHeight = rightCornerBoundery.y - leftCronerBoundery.y;
+        sf::Vertex* array = new sf::Vertex[arraywidth * arrayHeight];
+
+        //std::fill(array, array + (arraywidth * arrayHeight), sf::Vertex(sf::Vector2f(0, 0)), sf::Color(0, 0, 0, 0));
+        for (int i = 0; i < arraywidth * arrayHeight; i++)
+        {
+            int x = i % arraywidth;
+            int y = i / arraywidth;
+            array[i] = sf::Vertex(sf::Vector2f(x + leftCronerBoundery.x, y + leftCronerBoundery.y), sf::Color(0, 255, 0, 0));
+
+
+        }
+
+        for (sf::Vertex element : this->pixels)
+        {
+            if (
+                element.position.x<rightCornerBoundery.x &&
+                element.position.x > leftCronerBoundery.x &&
+                element.position.y > leftCronerBoundery.y &&
+                element.position.y < rightCornerBoundery.y
+
+                )
+                array[((int)element.position.x - leftCronerBoundery.x) + ((int)element.position.y - leftCronerBoundery.y) * arraywidth] = element;
+        }
+ 
+        sf::Color colorToFIll = array[(Pos.x - leftCronerBoundery.x) + (Pos.y - leftCronerBoundery.y) * arraywidth].color;
+        std::stack<sf::Vector2i> pixelsQ;
+        pixelsQ.push(Pos);
+
+        int counter = 0;
+        while (!pixelsQ.empty())
+        {
+            sf::Vector2i pos = pixelsQ.top();
+            pixelsQ.pop();
+            sf::Vector2i arrayPos = sf::Vector2i(pos.x - leftCronerBoundery.x, (pos.y - leftCronerBoundery.y));
+            int arrayIndex = arrayPos.x + arrayPos.y * arraywidth;
+            sf::Vertex vert = array[arrayIndex];
+            array[arrayIndex] = sf::Vertex(vert.position, fill_color);
+            counter++;
+
+
+            ///// rigt X
+            if (arrayPos.x < arraywidth)
+            {
+                if (array[arrayPos.x + 1 + arrayPos.y * arraywidth].color == colorToFIll && array[arrayPos.x + 1 + arrayPos.y * arraywidth].color != fill_color)
+                {
+                    pixelsQ.push(sf::Vector2i(pos.x + 1, pos.y));
+                }
+            }
+
+            ///// LEft X
+            if (arrayPos.x > 0)
+            {
+                if (array[arrayPos.x - 1 + arrayPos.y * arraywidth].color == colorToFIll && array[arrayPos.x - 1 + arrayPos.y * arraywidth].color != fill_color)
+                {
+                    pixelsQ.push(sf::Vector2i(pos.x - 1, pos.y));
+                }
+            }
+
+            ///// UP y
+            if (arrayPos.y > 0)
+            {
+                if (array[arrayPos.x + (arrayPos.y - 1) * arraywidth].color == colorToFIll && array[arrayPos.x + (arrayPos.y - 1) * arraywidth].color != fill_color)
+                {
+                    pixelsQ.push(sf::Vector2i(pos.x, pos.y - 1));
+                }
+            }
+
+
+            ///// DOWN y
+            if (arrayPos.y < arrayHeight)
+            {
+                if (array[arrayPos.x + (arrayPos.y + 1) * arraywidth].color == colorToFIll && array[arrayPos.x + (arrayPos.y + 1) * arraywidth].color != fill_color)
+                {
+                    pixelsQ.push(sf::Vector2i(pos.x, pos.y + 1));
+                }
+            }
+            std::cout << counter << " / " << pixelsQ.size() << std::endl;
+        }
+
+        //array[50+50*arraywidth] = sf::Vertex(sf::Vector2f(50,50), sf::Color::Red);
+
+        this->pixels.clear();
+
+        for (int i = 0; i < arraywidth * arrayHeight; i++)
+        {
+            //int x = i % arraywidth;
+           // int y = i / arraywidth;
+         //   sf::Color col = array[i].color;
+           // array[i] = sf::Vertex(sf::Vector2f(x + leftCronerBoundery.x, y + leftCronerBoundery.y), col);
+            if (array[i].color.a > 0)
+                addPixel(i % arraywidth + leftCronerBoundery.x, i / arraywidth + leftCronerBoundery.y, array[i].color);
+        }
+
+
+        delete[] array;
+
+
+
+    }
+
+
+
+
+
+
+
 
     void move(sf::Vector2f offset) override
     {

@@ -11,7 +11,7 @@
 
 int main() {
    
-	Engine* engine = new Engine(1000, 1000);
+	Engine* engine = new Engine(100, 100);
 	engine->setFramerate(60);
 	//engine->addRenderObject(new Line(sf::Vector2f(1000,10), sf::Vector2f(200, 200), 10,sf::Color::Red));
 
@@ -40,11 +40,12 @@ int main() {
 	},true)
 	
 	);
-	*//*
-	Circle* circ = new Circle(500, 500, 10, sf::Color::White);
-	engine->addRenderObject(circ);
-	circ->boundry_fill(sf::Vector2i(500, 500), sf::Vector2i(480, 480), sf::Vector2i(520, 520), sf::Color::Red, sf::Color::Blue);
 	*/
+		Circle* circ = new Circle(50, 50, 10, sf::Color::White);
+	engine->addRenderObject(circ);
+	//circ->boundry_fill(sf::Vector2i(50, 50), sf::Vector2i(38, 38), sf::Vector2i(62, 62), sf::Color::Red, sf::Color::White);
+	circ->flood_fill(sf::Vector2i(50, 50), sf::Vector2i(38, 38), sf::Vector2i(62, 62), sf::Color::Red);
+	/*
 	Polygonal* pol= new Polygonal({
 				sf::Vector2f(231,233),
 			sf::Vector2f(123,111),
@@ -56,7 +57,7 @@ int main() {
 	pol->centerOrigin();
 	engine->addRenderObject(pol);
 	engine->addUpdatable((Updatable*)pol);
-
+	*/
 
 
 
