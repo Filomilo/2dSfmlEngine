@@ -20,13 +20,14 @@ private:
 	int fps;
 	bool isRunning=true;
 	sf::Time timeElapsed;
+	sf::Time timeRunning;
 	const std::string logFile = "Engine.log";
 	Player* player;
 
 
 	std::list<sf::Drawable*> rednerObjects;
 	std::list<Updatable*> updatableObjects;
-
+	std::list<AnimatedObject*> animatedObjects;
 
 		void errorHandler(std::string description)
 	{
@@ -84,6 +85,10 @@ private:
 	
 	void gameUpdateLogic()
 	{
+		for (AnimatedObject* element : animatedObjects)
+		{
+			element->animate(timeRunning);
+		}
 	}
 	void gameUpdatePhysic()
 	{
@@ -115,6 +120,7 @@ private:
 	void gameLoop()
 	{
 		sf::Clock timer;
+		sf::Clock clok;
 		while (isRunning)
 		{
 			timer.restart();
@@ -124,6 +130,7 @@ private:
 			render();
 			soudUpdate();
 			this->timeElapsed = timer.getElapsedTime();
+			this->timeRunning = clok.getElapsedTime();
 		//	std::cout << timeElapsed.asMilliseconds() << std::endl;
 		}
 	}
@@ -136,6 +143,11 @@ private:
 
 
 public:
+	void addAnimatable(AnimatedObject* player)
+	{
+		this->animatedObjects.push_back(player);
+	}
+
 	Engine(int width, int height, bool isFullScreen=false)
 	{
 		this->width = width;
@@ -148,9 +160,10 @@ public:
 		if (!window.isOpen())
 			errorHandler("error: creating window");
 
-		player = new Player(width / 2, height / 2, 50, 50, sf::Color::Red);
+		player = new Player(width / 2, height / 2, 50, 50,"Assets/sprie.png");
 		addRenderObject((sf::Drawable*)player);
 		addUpdatable((Updatable*)player);
+		addAnimatable((AnimatedObject*)player);
 		
 	}
 

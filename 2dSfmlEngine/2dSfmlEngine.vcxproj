@@ -133,6 +133,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="2dSfmlEngine.cpp" />
+    <ClCompile Include="AnimatedObject.cpp" />
     <ClCompile Include="BrokenLines.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="Elipse.cpp" />
@@ -159,6 +160,7 @@
     <None Include="dependencies\SFML-2.6.0\bin\sfml-window-d-2.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnimatedObject.h" />
     <ClInclude Include="BrokenLines.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Elipse.h" />
