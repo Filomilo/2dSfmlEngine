@@ -20,31 +20,68 @@ public:
         quality(quality)
 			
     {
-        int interativeIndex;
-        int secondIndex;
+       set_render_type(sf::Points);
+
         
-        float beg[2]={ beginingTmp .x< endTmp.x? beginingTmp.x:endTmp.x,beginingTmp .y < endTmp.y ? beginingTmp.y: endTmp.y };
-        float end[2] = { beginingTmp.x < endTmp.x ? endTmp.x : beginingTmp.x,beginingTmp.y < endTmp.y ? endTmp.y : beginingTmp.y };
+        bool isHorizontal=abs(beginingTmp.x- endTmp.x)> abs(beginingTmp.y - endTmp.y);
+       // std::cout << "test\n";
 
 
-		if(abs(begining.x- endTmp.x)> abs(begining.y - endTmp.y))
-		{
-            interativeIndex = 0;
+        char firstIndex=0;
+    	char secondIndex=0;
+        float firstPoint[2];
+        float secondPoint[2];
+
+        if(isHorizontal)
+        {
+            firstIndex = 0;
             secondIndex = 1;
-		}
+            if(beginingTmp.x< endTmp.x)
+            {
+                firstPoint[0] = beginingTmp.x;
+                firstPoint[1] = beginingTmp.y;
+                secondPoint[0] = endTmp.x;
+                secondPoint[1] = endTmp.y;
+            }
+            else
+            {
+                secondPoint[0] = beginingTmp.x;
+                secondPoint[1] = beginingTmp.y;
+                firstPoint[0] = endTmp.x;
+                firstPoint[1] = endTmp.y;
+            }
+        }
         else
         {
-            interativeIndex =1;
+            firstIndex = 1;
             secondIndex = 0;
+            if (beginingTmp.y <  endTmp.y)
+            {
+                firstPoint[0] = beginingTmp.x;
+                firstPoint[1] = beginingTmp.y;
+                secondPoint[0] = endTmp.x;
+                secondPoint[1] = endTmp.y;
+            }
+            else
+            {
+                secondPoint[0] = beginingTmp.x;
+                secondPoint[1] = beginingTmp.y;
+                firstPoint[0] = endTmp.x;
+                firstPoint[1] = endTmp.y;
+            }
         }
-        float m = (beg[interativeIndex]- end[interativeIndex]) / (beg[secondIndex] - end[secondIndex]);
+        
 
-        for(beg[interativeIndex]; beg[interativeIndex]< end[interativeIndex];  beg[interativeIndex]= beg[interativeIndex]+quality)
+        
+		
+        float m = (firstPoint[secondIndex] - secondPoint[secondIndex]) /  (firstPoint[firstIndex] - secondPoint[firstIndex]);
+        m = (firstPoint[firstIndex] - secondPoint[firstIndex]) == 0 ? 0 : m;
+        for(firstPoint[firstIndex]; firstPoint[firstIndex]< secondPoint[firstIndex];  firstPoint[firstIndex]= firstPoint[firstIndex]+1)
         {
-            addPixel(beg[interativeIndex], beg[secondIndex], color);
-            beg[secondIndex] +=m;
+            addPixel(firstPoint[0], firstPoint[1], color);
+            firstPoint[secondIndex] +=m;
         }
-
+        
 
     }
 

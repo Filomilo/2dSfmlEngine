@@ -31,7 +31,7 @@ private:
 
 		void errorHandler(std::string description)
 	{
-			//TODO: game cleamnup?
+			
 			std::ofstream myfile;
 			myfile.open(logFile);
 			myfile << description;
@@ -161,13 +161,16 @@ public:
 			errorHandler("error: creating window");
 
 		player = new Player(width / 2, height / 2, 50, 50,"Assets/sprie.png");
-		//addRenderObject((sf::Drawable*)player);
-		//addUpdatable((Updatable*)player);
-		//addAnimatable((AnimatedObject*)player);
+	
 		
 	}
 
-
+	void setPlayer()
+	{
+		addRenderObject((sf::Drawable*)player);
+	addUpdatable((Updatable*)player);
+	addAnimatable((AnimatedObject*)player);
+	}
 	void setFramerate(unsigned int fps)
 	{
 		this->fps = fps;

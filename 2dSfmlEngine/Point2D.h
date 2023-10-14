@@ -12,6 +12,7 @@ class Point2D :
 public:
     Point2D(const sf::Vector2f& position, const sf::Color& color=sf::Color::White)
     {
+        set_render_type(sf::Points);
         addPixel(position.x, position.y, color);
     }
 
