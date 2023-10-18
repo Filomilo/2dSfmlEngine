@@ -13,7 +13,7 @@ int main(int argc, char* argv []) {
 	if (argc < 2)
    {
 	   printf("not enough arguments provided \n");
-	   return 0;
+	 //  return 0;
    }
 
 
@@ -21,7 +21,7 @@ int main(int argc, char* argv []) {
 	engine->setFramerate(60);
 	Circle* circ;
 	Polygonal* pol;
-	switch (argv[1][0])
+	switch ('3')
 	{
 	case '2':
 
@@ -41,7 +41,7 @@ int main(int argc, char* argv []) {
 
 	case '3':
 		circ = new Circle(500, 500, 50, sf::Color::White); 
-		circ->flood_fill(sf::Vector2i(500, 500), sf::Vector2i(300, 300), sf::Vector2i(800, 800), sf::Color::Red);
+		//circ->flood_fill(sf::Vector2i(500, 500), sf::Vector2i(300, 300), sf::Vector2i(800, 800), sf::Color::Red);
 		engine->addRenderObject(circ);
 		engine->addRenderObject(new Elipse(500, 500, 100,200, sf::Color::White));
 		engine->addRenderObject(

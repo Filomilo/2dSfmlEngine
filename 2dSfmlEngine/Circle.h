@@ -8,9 +8,21 @@ public:
     {
         this->set_render_type(sf::Points);
         float alphaOffset = 1 / radius;
-        for(float alpha=0;alpha<2*3.14;alpha+=alphaOffset)
+		float newX,newY;
+        for(float alpha=0;alpha<2*3.14/8;alpha+=alphaOffset)
         {
-            this->addPixel(x + radius * cos(alpha), y+radius * sin(alpha), color);
+			newX =  radius * cos(alpha);
+			newY =  radius * sin(alpha);
+            this->addPixel(x+newX, y+newY, color);
+			this->addPixel(x-newX, y+newY, color);
+			this->addPixel(x-newX, y-newY, color);
+			this->addPixel(x+newX, y-newY, color);
+
+			this->addPixel(x + newY, y + newX, color);
+			this->addPixel(x  -newY, y + newX, color);
+			this->addPixel(x  -newY, y - newX, color);
+			this->addPixel(x + newY, y - newX, color);
+		
         }
     }
 
