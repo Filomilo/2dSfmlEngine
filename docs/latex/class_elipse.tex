@@ -1,0 +1,101 @@
+\doxysection{Elipse Class Reference}
+\hypertarget{class_elipse}{}\label{class_elipse}\index{Elipse@{Elipse}}
+
+
+\doxylink{class_elipse}{Elipse} class for renderng elipse.  
+
+
+
+
+{\ttfamily \#include $<$Elipse.\+h$>$}
+
+Inheritance diagram for Elipse\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_elipse}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_elipse_a72c2cbe9f98b1deb2a8629b847b0fe84}{Elipse}} (float x, float y, float rx, float ry, sf\+::\+Color \mbox{\hyperlink{class_primitive_renderer_a0796683d15cbf1a5afc21ec9f91f296c}{color}}=sf\+::\+Color\+::\+White)
+\begin{DoxyCompactList}\small\item\em Construcot for elipse to set elipse pixels based on privieded paramters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_primitive_renderer}{Primitive\+Renderer}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_primitive_renderer_a9b131e4ee8d64e876bbd2cbce8087800}{add\+Pixel}} (float x, float y, sf\+::\+Color \mbox{\hyperlink{class_primitive_renderer_a0796683d15cbf1a5afc21ec9f91f296c}{color}})
+\begin{DoxyCompactList}\small\item\em function that adds point to pizel vectror for creating objects \end{DoxyCompactList}\item 
+sf\+::\+Color \mbox{\hyperlink{class_primitive_renderer_a29fa1629b2beb96ecaad51c867cbf5cf}{get\+\_\+color}} () const
+\begin{DoxyCompactList}\small\item\em function allowing to get color of an object \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_primitive_renderer_a0129f2164773c43530a96bc5ed328175}{set\+\_\+color}} (sf\+::\+Color \mbox{\hyperlink{class_primitive_renderer_a0796683d15cbf1a5afc21ec9f91f296c}{color}})
+\begin{DoxyCompactList}\small\item\em funciton to set color of an object \end{DoxyCompactList}\item 
+sf\+::\+Primitive\+Type \mbox{\hyperlink{class_primitive_renderer_a37786bce719c0e5b7a965a049b65c652}{get\+\_\+render\+\_\+type}} () const
+\begin{DoxyCompactList}\small\item\em function allwoing get type of render that is set on this object \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_primitive_renderer_a32b07f81a977b21324a8f47b6f45e3a3}{set\+\_\+render\+\_\+type}} (sf\+::\+Primitive\+Type render\+\_\+type)
+\begin{DoxyCompactList}\small\item\em function to set object render type \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_primitive_renderer_ac8971afed5e77e19facae2a9d36ed897}{center\+Origin}} ()
+\begin{DoxyCompactList}\small\item\em a function that avrages postion of every point and sets it as origin point of an object \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_primitive_renderer_a028943f67c08aa55d125bc91e969d838}{boundry\+\_\+fill}} (sf\+::\+Vector2i Pos, sf\+::\+Vector2i left\+Croner\+Boundery, sf\+::\+Vector2i right\+Corner\+Boundery, sf\+::\+Color fill\+\_\+color, sf\+::\+Color boundry\+\_\+color)
+\begin{DoxyCompactList}\small\item\em a function that is using boundery fill algorithm to fill object with color \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_primitive_renderer_a3d73eae30cc9af17fe95e5509159457a}{flood\+\_\+fill}} (sf\+::\+Vector2i Pos, sf\+::\+Vector2i left\+Croner\+Boundery, sf\+::\+Vector2i right\+Corner\+Boundery, sf\+::\+Color fill\+\_\+color)
+\begin{DoxyCompactList}\small\item\em a function allowing to fill pixel obejct using flood fill algorithm \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_primitive_renderer_a646a133c3597a6009449d06e37e82e75}{move}} (sf\+::\+Vector2f offset) override
+\begin{DoxyCompactList}\small\item\em an overided move function allowing to move obejct and its origin point in a scene \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_primitive_renderer_a05018bd215e38b5ec740032174959762}{scale}} (sf\+::\+Vector2f offset) override
+\begin{DoxyCompactList}\small\item\em an overided transform function allowing to scale object from origin point \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_primitive_renderer_a4a726b4afbd1dd201d3a8a42024657ac}{rotate}} (float degreee) override
+\begin{DoxyCompactList}\small\item\em an overided transoform fucntion allowign to rote obejct around its origin \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_primitive_renderer_aae07efe794ab741204b6793399cf81ef}{update}} (sf\+::\+Time time\+Elpased) override
+\begin{DoxyCompactList}\small\item\em an overided update fucntion here used for presenting transformation capablity \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_primitive_renderer}{Primitive\+Renderer}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_primitive_renderer_aa11f5e6eabbd19713c99b434cd5eb4d3}{draw}} (sf\+::\+Render\+Target \&target, sf\+::\+Render\+States states) const override
+\begin{DoxyCompactList}\small\item\em Overided draw fucnction allwoing to show object on screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_primitive_renderer}{Primitive\+Renderer}}}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Primitive\+Type \mbox{\hyperlink{class_primitive_renderer_aa28f77dd5cf0722cd1b3c77a17c16827}{render\+Type}} = sf\+::\+Line\+Strip
+\begin{DoxyCompactList}\small\item\em type of rendering in sfml allowing better more optimized results \end{DoxyCompactList}\item 
+std\+::vector$<$ sf\+::\+Vertex $>$ \mbox{\hyperlink{class_primitive_renderer_ad5659ad4e17f29673664b6f7af8f1cfe}{pixels}}
+\begin{DoxyCompactList}\small\item\em list of points for pixel rendering or lines dependeing on render type \end{DoxyCompactList}\item 
+sf\+::\+Color \mbox{\hyperlink{class_primitive_renderer_a0796683d15cbf1a5afc21ec9f91f296c}{color}}
+\begin{DoxyCompactList}\small\item\em Color of object. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_primitive_renderer_a4eb3c23a85f6c08a1b43997efe693dc9}{origin\+Point}}
+\begin{DoxyCompactList}\small\item\em origin point around wich object will be rotating \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_elipse}{Elipse} class for renderng elipse. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_elipse_a72c2cbe9f98b1deb2a8629b847b0fe84}\label{class_elipse_a72c2cbe9f98b1deb2a8629b847b0fe84} 
+\index{Elipse@{Elipse}!Elipse@{Elipse}}
+\index{Elipse@{Elipse}!Elipse@{Elipse}}
+\doxysubsubsection{\texorpdfstring{Elipse()}{Elipse()}}
+{\footnotesize\ttfamily Elipse\+::\+Elipse (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{rx,  }\item[{float}]{ry,  }\item[{sf\+::\+Color}]{color = {\ttfamily sf\+:\+:Color\+:\+:White} }\end{DoxyParamCaption})}
+
+
+
+Construcot for elipse to set elipse pixels based on privieded paramters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & elipse position in x axisis \\
+\hline
+{\em y} & elpise postion in y axis \\
+\hline
+{\em rx} & eleipse rasdius in x axis \\
+\hline
+{\em ry} & eleipse rasdius in y axis \\
+\hline
+{\em color} & color of elipse \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/studia/semestr5/\+Podstawy grafiki komputerowej/\+Laboratrium/2d\+Sfml\+Engine/2d\+Sfml\+Engine/2d\+Sfml\+Engine/\mbox{\hyperlink{_elipse_8h}{Elipse.\+h}}\item 
+D\+:/studia/semestr5/\+Podstawy grafiki komputerowej/\+Laboratrium/2d\+Sfml\+Engine/2d\+Sfml\+Engine/2d\+Sfml\+Engine/\mbox{\hyperlink{_elipse_8cpp}{Elipse.\+cpp}}\end{DoxyCompactItemize}

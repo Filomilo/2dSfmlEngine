@@ -1,30 +1,21 @@
 #pragma once
 #include "PrimitiveRenderer.h"
+
+/**
+ * \brief Cricle class for rendergng circle shape
+ */
 class Circle :
     public PrimitiveRenderer
 {
 public:
-    Circle(float x, float y, float radius, sf::Color color)
-    {
-        this->set_render_type(sf::Points);
-        float alphaOffset = 1 / radius;
-		float newX,newY;
-        for(float alpha=0;alpha<2*3.14/8;alpha+=alphaOffset)
-        {
-			newX =  radius * cos(alpha);
-			newY =  radius * sin(alpha);
-            this->addPixel(x+newX, y+newY, color);
-			this->addPixel(x-newX, y+newY, color);
-			this->addPixel(x-newX, y-newY, color);
-			this->addPixel(x+newX, y-newY, color);
-
-			this->addPixel(x + newY, y + newX, color);
-			this->addPixel(x  -newY, y + newX, color);
-			this->addPixel(x  -newY, y - newX, color);
-			this->addPixel(x + newY, y - newX, color);
-		
-        }
-    }
+	/**
+	 * \brief Cricle constrtor set points as circle pixel using circle alogritm with 8 symetry lines
+	 * \param x x position in 2d space
+	 * \param y cirlce y postion in 2d space
+	 * \param radius radius of cirlce
+	 * \param color color of cirlce
+	 */
+	Circle(float x, float y, float radius, sf::Color color);
 
 };
 

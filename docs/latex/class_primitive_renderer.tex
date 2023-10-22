@@ -1,0 +1,337 @@
+\doxysection{Primitive\+Renderer Class Reference}
+\hypertarget{class_primitive_renderer}{}\label{class_primitive_renderer}\index{PrimitiveRenderer@{PrimitiveRenderer}}
+
+
+a base class for rendering any cutom prymitivies and/or pixel(points) shapes  
+
+
+
+
+{\ttfamily \#include $<$Primitive\+Renderer.\+h$>$}
+
+Inheritance diagram for Primitive\+Renderer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.314050cm]{class_primitive_renderer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_primitive_renderer_a9b131e4ee8d64e876bbd2cbce8087800}{add\+Pixel}} (float x, float y, sf\+::\+Color \mbox{\hyperlink{class_primitive_renderer_a0796683d15cbf1a5afc21ec9f91f296c}{color}})
+\begin{DoxyCompactList}\small\item\em function that adds point to pizel vectror for creating objects \end{DoxyCompactList}\item 
+sf\+::\+Color \mbox{\hyperlink{class_primitive_renderer_a29fa1629b2beb96ecaad51c867cbf5cf}{get\+\_\+color}} () const
+\begin{DoxyCompactList}\small\item\em function allowing to get color of an object \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_primitive_renderer_a0129f2164773c43530a96bc5ed328175}{set\+\_\+color}} (sf\+::\+Color \mbox{\hyperlink{class_primitive_renderer_a0796683d15cbf1a5afc21ec9f91f296c}{color}})
+\begin{DoxyCompactList}\small\item\em funciton to set color of an object \end{DoxyCompactList}\item 
+sf\+::\+Primitive\+Type \mbox{\hyperlink{class_primitive_renderer_a37786bce719c0e5b7a965a049b65c652}{get\+\_\+render\+\_\+type}} () const
+\begin{DoxyCompactList}\small\item\em function allwoing get type of render that is set on this object \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_primitive_renderer_a32b07f81a977b21324a8f47b6f45e3a3}{set\+\_\+render\+\_\+type}} (sf\+::\+Primitive\+Type render\+\_\+type)
+\begin{DoxyCompactList}\small\item\em function to set object render type \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_primitive_renderer_ac8971afed5e77e19facae2a9d36ed897}{center\+Origin}} ()
+\begin{DoxyCompactList}\small\item\em a function that avrages postion of every point and sets it as origin point of an object \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_primitive_renderer_a028943f67c08aa55d125bc91e969d838}{boundry\+\_\+fill}} (sf\+::\+Vector2i Pos, sf\+::\+Vector2i left\+Croner\+Boundery, sf\+::\+Vector2i right\+Corner\+Boundery, sf\+::\+Color fill\+\_\+color, sf\+::\+Color boundry\+\_\+color)
+\begin{DoxyCompactList}\small\item\em a function that is using boundery fill algorithm to fill object with color \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_primitive_renderer_a3d73eae30cc9af17fe95e5509159457a}{flood\+\_\+fill}} (sf\+::\+Vector2i Pos, sf\+::\+Vector2i left\+Croner\+Boundery, sf\+::\+Vector2i right\+Corner\+Boundery, sf\+::\+Color fill\+\_\+color)
+\begin{DoxyCompactList}\small\item\em a function allowing to fill pixel obejct using flood fill algorithm \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_primitive_renderer_a646a133c3597a6009449d06e37e82e75}{move}} (sf\+::\+Vector2f offset) override
+\begin{DoxyCompactList}\small\item\em an overided move function allowing to move obejct and its origin point in a scene \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_primitive_renderer_a05018bd215e38b5ec740032174959762}{scale}} (sf\+::\+Vector2f offset) override
+\begin{DoxyCompactList}\small\item\em an overided transform function allowing to scale object from origin point \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_primitive_renderer_a4a726b4afbd1dd201d3a8a42024657ac}{rotate}} (float degreee) override
+\begin{DoxyCompactList}\small\item\em an overided transoform fucntion allowign to rote obejct around its origin \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_primitive_renderer_aae07efe794ab741204b6793399cf81ef}{update}} (sf\+::\+Time time\+Elpased) override
+\begin{DoxyCompactList}\small\item\em an overided update fucntion here used for presenting transformation capablity \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_primitive_renderer_aa11f5e6eabbd19713c99b434cd5eb4d3}{draw}} (sf\+::\+Render\+Target \&target, sf\+::\+Render\+States states) const override
+\begin{DoxyCompactList}\small\item\em Overided draw fucnction allwoing to show object on screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Primitive\+Type \mbox{\hyperlink{class_primitive_renderer_aa28f77dd5cf0722cd1b3c77a17c16827}{render\+Type}} = sf\+::\+Line\+Strip
+\begin{DoxyCompactList}\small\item\em type of rendering in sfml allowing better more optimized results \end{DoxyCompactList}\item 
+std\+::vector$<$ sf\+::\+Vertex $>$ \mbox{\hyperlink{class_primitive_renderer_ad5659ad4e17f29673664b6f7af8f1cfe}{pixels}}
+\begin{DoxyCompactList}\small\item\em list of points for pixel rendering or lines dependeing on render type \end{DoxyCompactList}\item 
+sf\+::\+Color \mbox{\hyperlink{class_primitive_renderer_a0796683d15cbf1a5afc21ec9f91f296c}{color}}
+\begin{DoxyCompactList}\small\item\em Color of object. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_primitive_renderer_a4eb3c23a85f6c08a1b43997efe693dc9}{origin\+Point}}
+\begin{DoxyCompactList}\small\item\em origin point around wich object will be rotating \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+a base class for rendering any cutom prymitivies and/or pixel(points) shapes 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_primitive_renderer_a9b131e4ee8d64e876bbd2cbce8087800}\label{class_primitive_renderer_a9b131e4ee8d64e876bbd2cbce8087800} 
+\index{PrimitiveRenderer@{PrimitiveRenderer}!addPixel@{addPixel}}
+\index{addPixel@{addPixel}!PrimitiveRenderer@{PrimitiveRenderer}}
+\doxysubsubsection{\texorpdfstring{addPixel()}{addPixel()}}
+{\footnotesize\ttfamily void Primitive\+Renderer\+::add\+Pixel (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{sf\+::\+Color}]{color }\end{DoxyParamCaption})}
+
+
+
+function that adds point to pizel vectror for creating objects 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & position of point on x axisis \\
+\hline
+{\em y} & position of y on y axis \\
+\hline
+{\em color} & color of point being added \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_primitive_renderer_a028943f67c08aa55d125bc91e969d838}\label{class_primitive_renderer_a028943f67c08aa55d125bc91e969d838} 
+\index{PrimitiveRenderer@{PrimitiveRenderer}!boundry\_fill@{boundry\_fill}}
+\index{boundry\_fill@{boundry\_fill}!PrimitiveRenderer@{PrimitiveRenderer}}
+\doxysubsubsection{\texorpdfstring{boundry\_fill()}{boundry\_fill()}}
+{\footnotesize\ttfamily void Primitive\+Renderer\+::boundry\+\_\+fill (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2i}]{Pos,  }\item[{sf\+::\+Vector2i}]{left\+Croner\+Boundery,  }\item[{sf\+::\+Vector2i}]{right\+Corner\+Boundery,  }\item[{sf\+::\+Color}]{fill\+\_\+color,  }\item[{sf\+::\+Color}]{boundry\+\_\+color }\end{DoxyParamCaption})}
+
+
+
+a function that is using boundery fill algorithm to fill object with color 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pos} & postion from which to start fillig obejct \\
+\hline
+{\em left\+Croner\+Boundery} & left upper corner of boudnery to fill obejct to alow for better optimization \\
+\hline
+{\em right\+Corner\+Boundery} & right down corner of boundery to fill allowing for better optmizaion \\
+\hline
+{\em fill\+\_\+color} & color of object to fill \\
+\hline
+{\em boundry\+\_\+color} & color of boundery to stop filling on \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_primitive_renderer_ac8971afed5e77e19facae2a9d36ed897}\label{class_primitive_renderer_ac8971afed5e77e19facae2a9d36ed897} 
+\index{PrimitiveRenderer@{PrimitiveRenderer}!centerOrigin@{centerOrigin}}
+\index{centerOrigin@{centerOrigin}!PrimitiveRenderer@{PrimitiveRenderer}}
+\doxysubsubsection{\texorpdfstring{centerOrigin()}{centerOrigin()}}
+{\footnotesize\ttfamily void Primitive\+Renderer\+::center\+Origin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+a function that avrages postion of every point and sets it as origin point of an object 
+
+\Hypertarget{class_primitive_renderer_aa11f5e6eabbd19713c99b434cd5eb4d3}\label{class_primitive_renderer_aa11f5e6eabbd19713c99b434cd5eb4d3} 
+\index{PrimitiveRenderer@{PrimitiveRenderer}!draw@{draw}}
+\index{draw@{draw}!PrimitiveRenderer@{PrimitiveRenderer}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Primitive\+Renderer\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Target \&}]{target,  }\item[{sf\+::\+Render\+States}]{states }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Overided draw fucnction allwoing to show object on screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & place to draw elments on \\
+\hline
+{\em states} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_primitive_renderer_a3d73eae30cc9af17fe95e5509159457a}\label{class_primitive_renderer_a3d73eae30cc9af17fe95e5509159457a} 
+\index{PrimitiveRenderer@{PrimitiveRenderer}!flood\_fill@{flood\_fill}}
+\index{flood\_fill@{flood\_fill}!PrimitiveRenderer@{PrimitiveRenderer}}
+\doxysubsubsection{\texorpdfstring{flood\_fill()}{flood\_fill()}}
+{\footnotesize\ttfamily void Primitive\+Renderer\+::flood\+\_\+fill (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2i}]{Pos,  }\item[{sf\+::\+Vector2i}]{left\+Croner\+Boundery,  }\item[{sf\+::\+Vector2i}]{right\+Corner\+Boundery,  }\item[{sf\+::\+Color}]{fill\+\_\+color }\end{DoxyParamCaption})}
+
+
+
+a function allowing to fill pixel obejct using flood fill algorithm 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pos} & postion to start filling from \\
+\hline
+{\em left\+Croner\+Boundery} & left upper corner of boudnery to fill obejct to alow for better optimization \\
+\hline
+{\em right\+Corner\+Boundery} & right down corner of boundery to fill allowing for better optmizaion \\
+\hline
+{\em fill\+\_\+color} & color of object to fill \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_primitive_renderer_a29fa1629b2beb96ecaad51c867cbf5cf}\label{class_primitive_renderer_a29fa1629b2beb96ecaad51c867cbf5cf} 
+\index{PrimitiveRenderer@{PrimitiveRenderer}!get\_color@{get\_color}}
+\index{get\_color@{get\_color}!PrimitiveRenderer@{PrimitiveRenderer}}
+\doxysubsubsection{\texorpdfstring{get\_color()}{get\_color()}}
+{\footnotesize\ttfamily sf\+::\+Color Primitive\+Renderer\+::get\+\_\+color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+function allowing to get color of an object 
+
+\begin{DoxyReturn}{Returns}
+color of object 
+\end{DoxyReturn}
+\Hypertarget{class_primitive_renderer_a37786bce719c0e5b7a965a049b65c652}\label{class_primitive_renderer_a37786bce719c0e5b7a965a049b65c652} 
+\index{PrimitiveRenderer@{PrimitiveRenderer}!get\_render\_type@{get\_render\_type}}
+\index{get\_render\_type@{get\_render\_type}!PrimitiveRenderer@{PrimitiveRenderer}}
+\doxysubsubsection{\texorpdfstring{get\_render\_type()}{get\_render\_type()}}
+{\footnotesize\ttfamily sf\+::\+Primitive\+Type Primitive\+Renderer\+::get\+\_\+render\+\_\+type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+function allwoing get type of render that is set on this object 
+
+\begin{DoxyReturn}{Returns}
+render type of an object 
+\end{DoxyReturn}
+\Hypertarget{class_primitive_renderer_a646a133c3597a6009449d06e37e82e75}\label{class_primitive_renderer_a646a133c3597a6009449d06e37e82e75} 
+\index{PrimitiveRenderer@{PrimitiveRenderer}!move@{move}}
+\index{move@{move}!PrimitiveRenderer@{PrimitiveRenderer}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void Primitive\+Renderer\+::move (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{offset }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+an overided move function allowing to move obejct and its origin point in a scene 
+
+
+\begin{DoxyParams}{Parameters}
+{\em offset} & movement vector that object will move on scene \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_transformable_ab07f4b4335c3eb37d1cb421d6eea8a7d}{Transformable}}.
+
+\Hypertarget{class_primitive_renderer_a4a726b4afbd1dd201d3a8a42024657ac}\label{class_primitive_renderer_a4a726b4afbd1dd201d3a8a42024657ac} 
+\index{PrimitiveRenderer@{PrimitiveRenderer}!rotate@{rotate}}
+\index{rotate@{rotate}!PrimitiveRenderer@{PrimitiveRenderer}}
+\doxysubsubsection{\texorpdfstring{rotate()}{rotate()}}
+{\footnotesize\ttfamily void Primitive\+Renderer\+::rotate (\begin{DoxyParamCaption}\item[{float}]{degreee }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+an overided transoform fucntion allowign to rote obejct around its origin 
+
+
+\begin{DoxyParams}{Parameters}
+{\em degreee} & amount of degres to rotate \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_transformable_a8038245962727081b00bb836dba5f093}{Transformable}}.
+
+\Hypertarget{class_primitive_renderer_a05018bd215e38b5ec740032174959762}\label{class_primitive_renderer_a05018bd215e38b5ec740032174959762} 
+\index{PrimitiveRenderer@{PrimitiveRenderer}!scale@{scale}}
+\index{scale@{scale}!PrimitiveRenderer@{PrimitiveRenderer}}
+\doxysubsubsection{\texorpdfstring{scale()}{scale()}}
+{\footnotesize\ttfamily void Primitive\+Renderer\+::scale (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{offset }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+an overided transform function allowing to scale object from origin point 
+
+
+\begin{DoxyParams}{Parameters}
+{\em offset} & Vector scale defining scaling values on each axis \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_transformable_acecf0d8dfaa9f65c6c8e2efd6ce686ba}{Transformable}}.
+
+\Hypertarget{class_primitive_renderer_a0129f2164773c43530a96bc5ed328175}\label{class_primitive_renderer_a0129f2164773c43530a96bc5ed328175} 
+\index{PrimitiveRenderer@{PrimitiveRenderer}!set\_color@{set\_color}}
+\index{set\_color@{set\_color}!PrimitiveRenderer@{PrimitiveRenderer}}
+\doxysubsubsection{\texorpdfstring{set\_color()}{set\_color()}}
+{\footnotesize\ttfamily void Primitive\+Renderer\+::set\+\_\+color (\begin{DoxyParamCaption}\item[{sf\+::\+Color}]{color }\end{DoxyParamCaption})}
+
+
+
+funciton to set color of an object 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & color to set an object to \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_primitive_renderer_a32b07f81a977b21324a8f47b6f45e3a3}\label{class_primitive_renderer_a32b07f81a977b21324a8f47b6f45e3a3} 
+\index{PrimitiveRenderer@{PrimitiveRenderer}!set\_render\_type@{set\_render\_type}}
+\index{set\_render\_type@{set\_render\_type}!PrimitiveRenderer@{PrimitiveRenderer}}
+\doxysubsubsection{\texorpdfstring{set\_render\_type()}{set\_render\_type()}}
+{\footnotesize\ttfamily void Primitive\+Renderer\+::set\+\_\+render\+\_\+type (\begin{DoxyParamCaption}\item[{sf\+::\+Primitive\+Type}]{render\+\_\+type }\end{DoxyParamCaption})}
+
+
+
+function to set object render type 
+
+
+\begin{DoxyParams}{Parameters}
+{\em render\+\_\+type} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_primitive_renderer_aae07efe794ab741204b6793399cf81ef}\label{class_primitive_renderer_aae07efe794ab741204b6793399cf81ef} 
+\index{PrimitiveRenderer@{PrimitiveRenderer}!update@{update}}
+\index{update@{update}!PrimitiveRenderer@{PrimitiveRenderer}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Primitive\+Renderer\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{time\+Elpased }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+an overided update fucntion here used for presenting transformation capablity 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time\+Elpased} & amount of time passed since prevoius rendering \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_updatable_ac0c1fac981f74d445e7837906ec2af7d}{Updatable}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_primitive_renderer_a0796683d15cbf1a5afc21ec9f91f296c}\label{class_primitive_renderer_a0796683d15cbf1a5afc21ec9f91f296c} 
+\index{PrimitiveRenderer@{PrimitiveRenderer}!color@{color}}
+\index{color@{color}!PrimitiveRenderer@{PrimitiveRenderer}}
+\doxysubsubsection{\texorpdfstring{color}{color}}
+{\footnotesize\ttfamily sf\+::\+Color Primitive\+Renderer\+::color\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Color of object. 
+
+\Hypertarget{class_primitive_renderer_a4eb3c23a85f6c08a1b43997efe693dc9}\label{class_primitive_renderer_a4eb3c23a85f6c08a1b43997efe693dc9} 
+\index{PrimitiveRenderer@{PrimitiveRenderer}!originPoint@{originPoint}}
+\index{originPoint@{originPoint}!PrimitiveRenderer@{PrimitiveRenderer}}
+\doxysubsubsection{\texorpdfstring{originPoint}{originPoint}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Primitive\+Renderer\+::origin\+Point\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+origin point around wich object will be rotating 
+
+\Hypertarget{class_primitive_renderer_ad5659ad4e17f29673664b6f7af8f1cfe}\label{class_primitive_renderer_ad5659ad4e17f29673664b6f7af8f1cfe} 
+\index{PrimitiveRenderer@{PrimitiveRenderer}!pixels@{pixels}}
+\index{pixels@{pixels}!PrimitiveRenderer@{PrimitiveRenderer}}
+\doxysubsubsection{\texorpdfstring{pixels}{pixels}}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Vertex$>$ Primitive\+Renderer\+::pixels\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+list of points for pixel rendering or lines dependeing on render type 
+
+\Hypertarget{class_primitive_renderer_aa28f77dd5cf0722cd1b3c77a17c16827}\label{class_primitive_renderer_aa28f77dd5cf0722cd1b3c77a17c16827} 
+\index{PrimitiveRenderer@{PrimitiveRenderer}!renderType@{renderType}}
+\index{renderType@{renderType}!PrimitiveRenderer@{PrimitiveRenderer}}
+\doxysubsubsection{\texorpdfstring{renderType}{renderType}}
+{\footnotesize\ttfamily sf\+::\+Primitive\+Type Primitive\+Renderer\+::render\+Type = sf\+::\+Line\+Strip\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+type of rendering in sfml allowing better more optimized results 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/studia/semestr5/\+Podstawy grafiki komputerowej/\+Laboratrium/2d\+Sfml\+Engine/2d\+Sfml\+Engine/2d\+Sfml\+Engine/\mbox{\hyperlink{_primitive_renderer_8h}{Primitive\+Renderer.\+h}}\item 
+D\+:/studia/semestr5/\+Podstawy grafiki komputerowej/\+Laboratrium/2d\+Sfml\+Engine/2d\+Sfml\+Engine/2d\+Sfml\+Engine/\mbox{\hyperlink{_primitive_renderer_8cpp}{Primitive\+Renderer.\+cpp}}\end{DoxyCompactItemize}

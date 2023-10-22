@@ -1,4 +1,10 @@
-
+/*****************************************************************//**
+ * \file   2dSfmlEngine.cpp
+ * \brief  main test Function for presenting capabilities of 2d engine
+ * 
+ * \author 3ID14A
+ * \date   October 2023
+ *********************************************************************/
 #include <SFML/Window.hpp>
 
 #include "BrokenLines.h"
@@ -9,25 +15,41 @@
 #include "Point2D.h"
 #include "Polygonal.h"
 
+/**
+ * \brief main function that tests capabaliteis of 2d egngine, you can choose a number from 2-5 coreesponding to specific instruciton during laboratory
+ * \param argc amount of arguments provided
+ * \param argv argment provided
+ * \return program code
+ */
 int main(int argc, char* argv []) {
+	char choice = 0;
 	if (argc < 2)
    {
 	   printf("not enough arguments provided \n");
+		std::cin >> choice;
+	
 	 //  return 0;
    }
+	else
+	{
+		choice = argv[1][0];
+	}
 
 
 	Engine* engine = new Engine(1000, 1000);
 	engine->setFramerate(60);
 	Circle* circ;
 	Polygonal* pol;
-	switch ('3')
+	switch (choice)
 	{
 	case '2':
 
 		engine->addRenderObject(new Line(sf::Vector2f(1, 1), sf::Vector2f(300, 1000), 10, sf::Color::Red));
 		engine->addRenderObject(new Line(sf::Vector2f(300, 1000), sf::Vector2f(600, 1), 10, sf::Color::Red));
 		engine->addRenderObject(new Line(sf::Vector2f(600, 1), sf::Vector2f(900, 1000), 10, sf::Color::Red));
+		engine->addRenderObject(new Line(sf::Vector2f(500, 1), sf::Vector2f(500, 1000), 10, sf::Color::Green));
+		engine->addRenderObject(new Line(sf::Vector2f(0, 500), sf::Vector2f(1000, 500), 10, sf::Color::Green));
+
 		engine->addRenderObject(new Point2D(500,500, sf::Color::Yellow));
 		engine->addRenderObject((sf::Drawable*)
 			new BrokenLines({
@@ -41,7 +63,7 @@ int main(int argc, char* argv []) {
 
 	case '3':
 		circ = new Circle(500, 500, 50, sf::Color::White); 
-		//circ->flood_fill(sf::Vector2i(500, 500), sf::Vector2i(300, 300), sf::Vector2i(800, 800), sf::Color::Red);
+		circ->flood_fill(sf::Vector2i(500, 500), sf::Vector2i(300, 300), sf::Vector2i(800, 800), sf::Color::Red);
 		engine->addRenderObject(circ);
 		engine->addRenderObject(new Elipse(500, 500, 100,200, sf::Color::White));
 		engine->addRenderObject(
@@ -78,45 +100,10 @@ int main(int argc, char* argv []) {
 	}
 
 
-	//engine->addRenderObject(new Line(sf::Vector2f(1000,10), sf::Vector2f(200, 200), 10,sf::Color::Red));
-
-	/*
-	BrokenLines* brL= new BrokenLines(
-		{
-		sf::Vector2f(0,0),
-			sf::Vector2f(900,100),
-			sf::Vector2f(900,1000),
-			sf::Vector2f(50,23)
-		},
-		sf::Color::White);
-	engine->addRenderObject((sf::Drawable*)brL);
-	*/
-	//engine->addRenderObject(new Circle(500, 500, 100, sf::Color::White));
-//	engine->addRenderObject(new Elipse(500, 500, 100,200, sf::Color::White));
-	/*
-	engine->addRenderObject(
-		new Polygonal({
-				sf::Vector2f(231,233),
-			sf::Vector2f(123,111),
-			sf::Vector2f(12,333),
-			sf::Vector2f(556,334),
-			sf::Vector2f(888,555),
-
-	},true)
-	
-	);
-	*/
-		//Circle* circ = new Circle(50, 50, 10, sf::Color::White);
-	//engine->addRenderObject(circ);
-	//circ->boundry_fill(sf::Vector2i(50, 50), sf::Vector2i(38, 38), sf::Vector2i(62, 62), sf::Color::Red, sf::Color::White);
-	//circ->flood_fill(sf::Vector2i(50, 50), sf::Vector2i(38, 38), sf::Vector2i(62, 62), sf::Color::Red);
-	/*
-	
-	*/
 
 
 
 	engine->start();
-	//delete engine;
+	delete engine;
     return 0;
 }

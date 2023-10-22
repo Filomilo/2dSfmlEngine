@@ -1,26 +1,20 @@
 #pragma once
 #include "PrimitiveRenderer.h"
+
+/**
+ * \brief Polygonal class allowing to reneder filled polygons using sfml render type
+ */
 class Polygonal :
     public PrimitiveRenderer
 {
 public:
-    Polygonal(std::initializer_list<sf::Vector2f> listPoints, bool filled, sf::Color color=sf::Color::White)
-    {
-
-	    for (sf::Vector2f element : listPoints)
-	    {
-			this->addPixel(element.x, element.y, color);
-	    }
-		if (!filled) {
-			this->addPixel(listPoints.begin()->x, listPoints.begin()->y, color);
-			this->set_render_type(sf::LineStrip);
-		}
-		else
-		{
-			this->set_render_type(sf::TriangleFan);
-		}
-	
-    }
+	/**
+	 * \brief class constrtor that sets up polygon points and its paramters
+	 * \param listPoints points of polygon
+	 * \param filled is polygon filled
+	 * \param color color of polygon
+	 */
+	Polygonal(std::initializer_list<sf::Vector2f> listPoints, bool filled, sf::Color color = sf::Color::White);
 
 
 };

@@ -5,18 +5,18 @@
 
 #include "PrimitiveRenderer.h"
 
+/**
+ * \brief ckass alowowing to drawe broken sperate lines using sfml lines render type based on provided points
+ */
 class BrokenLines: PrimitiveRenderer
 {
 public:
-	BrokenLines(std::initializer_list<sf::Vector2f> list, sf::Color color)
-	{
-		for (sf::Vector2f pos: list)
-		{
-			addPixel(pos.x, pos.y, color);
-		}
-		set_render_type(sf::Lines);
-	}
-
+	/**
+	 * \brief construtor for initlizing Broken lines
+	 * \param list list of points based on which will drwa lines
+	 * \param color color of lines
+	 */
+	BrokenLines(std::initializer_list<sf::Vector2f> list, sf::Color color);
 
 
 

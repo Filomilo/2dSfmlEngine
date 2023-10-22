@@ -1,0 +1,70 @@
+\doxysection{Engine.\+h}
+\hypertarget{_engine_8h_source}{}\label{_engine_8h_source}\index{D:/studia/semestr5/Podstawy grafiki komputerowej/Laboratrium/2dSfmlEngine/2dSfmlEngine/2dSfmlEngine/Engine.h@{D:/studia/semestr5/Podstawy grafiki komputerowej/Laboratrium/2dSfmlEngine/2dSfmlEngine/2dSfmlEngine/Engine.h}}
+\mbox{\hyperlink{_engine_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <SFML/Window.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_broken_lines_8h}{BrokenLines.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_player_8h}{Player.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_polygonal_8h}{Polygonal.h}}"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_engine}{Engine}}}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ width;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ height;}
+\DoxyCodeLine{00030\ \ \ \ \ sf::RenderWindow\ \ window;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ fps;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ isRunning=\textcolor{keyword}{true};}
+\DoxyCodeLine{00042\ \ \ \ \ sf::Time\ timeElapsed;}
+\DoxyCodeLine{00046\ \ \ \ \ sf::Time\ timeRunning;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ logFile\ =\ \textcolor{stringliteral}{"{}Engine.log"{}};}
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{class_player}{Player}}*\ player;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00059\ \ \ \ \ std::list<sf::Drawable*>\ rednerObjects;}
+\DoxyCodeLine{00063\ \ \ \ \ std::list<Updatable*>\ updatableObjects;}
+\DoxyCodeLine{00067\ \ \ \ \ std::list<AnimatedObject*>\ animatedObjects;}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ errorHandler(std::string\ description);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ eventHandler();}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ gameUpdateLogic();}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ gameUpdatePhysic();}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ render();}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ soudUpdate();}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{void}\ gameLoop();}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{void}\ gameCleanUp();}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_a757ca276b66002e5fefaf29ed068965d}{addAnimatable}}(\mbox{\hyperlink{class_animated_object}{AnimatedObject}}*\ player);}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00124\ \ \ \ \ \mbox{\hyperlink{class_engine}{Engine}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height,\ \textcolor{keywordtype}{bool}\ isFullScreen\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_a1c3a1bc217c9d53f86a95b3864a854be}{setPlayer}}();}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_af95ceaed7cf079db40f774ec6cf4111d}{setFramerate}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ fps);}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_a4d8066dd213a03f5420d1bf60f150ca7}{start}}();}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_afc6034b91635c3eb412e322a080d4a66}{addRenderObject}}(sf::Drawable*\ \textcolor{keywordtype}{object});}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00151\ \ \ \ \ \mbox{\hyperlink{class_engine_a8ef7030a089ecb30bbfcb9e43094717a}{\string~Engine}}();}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_a21d6392c3aa3eae68448734dc1944a93}{addUpdatable}}(\mbox{\hyperlink{class_updatable}{Updatable}}*\ pol);}
+\DoxyCodeLine{00158\ \};}
+\DoxyCodeLine{00159\ }
+
+\end{DoxyCode}

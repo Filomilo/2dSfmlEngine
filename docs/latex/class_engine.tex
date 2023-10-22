@@ -1,0 +1,154 @@
+\doxysection{Engine Class Reference}
+\hypertarget{class_engine}{}\label{class_engine}\index{Engine@{Engine}}
+
+
+Main engine class that hadnle all of rendering udpates and obejcts.  
+
+
+
+
+{\ttfamily \#include $<$Engine.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_engine_a757ca276b66002e5fefaf29ed068965d}{add\+Animatable}} (\mbox{\hyperlink{class_animated_object}{Animated\+Object}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em fucniton to add instance cast to Animted\+Object to system for future animation updates \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_engine_a89add7d5623cb48c26650ae541638ecb}{Engine}} (int width, int height, bool is\+Full\+Screen=false)
+\begin{DoxyCompactList}\small\item\em main constrotr to setup window and libraries for game engine \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_a1c3a1bc217c9d53f86a95b3864a854be}{set\+Player}} ()
+\begin{DoxyCompactList}\small\item\em function taht actiavtes basic player for game \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_af95ceaed7cf079db40f774ec6cf4111d}{set\+Framerate}} (unsigned int fps)
+\begin{DoxyCompactList}\small\item\em function that sets max framerate for game \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_a4d8066dd213a03f5420d1bf60f150ca7}{start}} ()
+\begin{DoxyCompactList}\small\item\em function that actvates game engine and goes into main loop \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_afc6034b91635c3eb412e322a080d4a66}{add\+Render\+Object}} (sf\+::\+Drawable \texorpdfstring{$\ast$}{*}object)
+\begin{DoxyCompactList}\small\item\em function that allows to drawable pointer to drawable list to be render by game engine in loop \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_engine_a8ef7030a089ecb30bbfcb9e43094717a}{\texorpdfstring{$\sim$}{\string~}\+Engine}} ()
+\begin{DoxyCompactList}\small\item\em desctor that activates cleanup for game engine \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_a21d6392c3aa3eae68448734dc1944a93}{add\+Updatable}} (\mbox{\hyperlink{class_updatable}{Updatable}} \texorpdfstring{$\ast$}{*}pol)
+\begin{DoxyCompactList}\small\item\em function that adds updatable objects tp updatables list for future activaitng in game loop \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main engine class that hadnle all of rendering udpates and obejcts. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_engine_a89add7d5623cb48c26650ae541638ecb}\label{class_engine_a89add7d5623cb48c26650ae541638ecb} 
+\index{Engine@{Engine}!Engine@{Engine}}
+\index{Engine@{Engine}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{Engine()}{Engine()}}
+{\footnotesize\ttfamily Engine\+::\+Engine (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height,  }\item[{bool}]{is\+Full\+Screen = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+main constrotr to setup window and libraries for game engine 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & width of window \\
+\hline
+{\em height} & height of window \\
+\hline
+{\em is\+Full\+Screen} & whethear or not window is in full scren mode \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_engine_a8ef7030a089ecb30bbfcb9e43094717a}\label{class_engine_a8ef7030a089ecb30bbfcb9e43094717a} 
+\index{Engine@{Engine}!````~Engine@{\texorpdfstring{$\sim$}{\string~}Engine}}
+\index{````~Engine@{\texorpdfstring{$\sim$}{\string~}Engine}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Engine()}{\string~Engine()}}
+{\footnotesize\ttfamily Engine\+::\texorpdfstring{$\sim$}{\string~}\+Engine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+desctor that activates cleanup for game engine 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_engine_a757ca276b66002e5fefaf29ed068965d}\label{class_engine_a757ca276b66002e5fefaf29ed068965d} 
+\index{Engine@{Engine}!addAnimatable@{addAnimatable}}
+\index{addAnimatable@{addAnimatable}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{addAnimatable()}{addAnimatable()}}
+{\footnotesize\ttfamily void Engine\+::add\+Animatable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_animated_object}{Animated\+Object}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})}
+
+
+
+fucniton to add instance cast to Animted\+Object to system for future animation updates 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & pointer to Animated object instance \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_engine_afc6034b91635c3eb412e322a080d4a66}\label{class_engine_afc6034b91635c3eb412e322a080d4a66} 
+\index{Engine@{Engine}!addRenderObject@{addRenderObject}}
+\index{addRenderObject@{addRenderObject}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{addRenderObject()}{addRenderObject()}}
+{\footnotesize\ttfamily void Engine\+::add\+Render\+Object (\begin{DoxyParamCaption}\item[{sf\+::\+Drawable \texorpdfstring{$\ast$}{*}}]{object }\end{DoxyParamCaption})}
+
+
+
+function that allows to drawable pointer to drawable list to be render by game engine in loop 
+
+
+\begin{DoxyParams}{Parameters}
+{\em object} & pointer to drawable object to be added \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_engine_a21d6392c3aa3eae68448734dc1944a93}\label{class_engine_a21d6392c3aa3eae68448734dc1944a93} 
+\index{Engine@{Engine}!addUpdatable@{addUpdatable}}
+\index{addUpdatable@{addUpdatable}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{addUpdatable()}{addUpdatable()}}
+{\footnotesize\ttfamily void Engine\+::add\+Updatable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_updatable}{Updatable}} \texorpdfstring{$\ast$}{*}}]{pol }\end{DoxyParamCaption})}
+
+
+
+function that adds updatable objects tp updatables list for future activaitng in game loop 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pol} & pointer to Updatablle instnace \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_engine_af95ceaed7cf079db40f774ec6cf4111d}\label{class_engine_af95ceaed7cf079db40f774ec6cf4111d} 
+\index{Engine@{Engine}!setFramerate@{setFramerate}}
+\index{setFramerate@{setFramerate}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{setFramerate()}{setFramerate()}}
+{\footnotesize\ttfamily void Engine\+::set\+Framerate (\begin{DoxyParamCaption}\item[{unsigned int}]{fps }\end{DoxyParamCaption})}
+
+
+
+function that sets max framerate for game 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fps} & amount of frames per second \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_engine_a1c3a1bc217c9d53f86a95b3864a854be}\label{class_engine_a1c3a1bc217c9d53f86a95b3864a854be} 
+\index{Engine@{Engine}!setPlayer@{setPlayer}}
+\index{setPlayer@{setPlayer}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{setPlayer()}{setPlayer()}}
+{\footnotesize\ttfamily void Engine\+::set\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+function taht actiavtes basic player for game 
+
+\Hypertarget{class_engine_a4d8066dd213a03f5420d1bf60f150ca7}\label{class_engine_a4d8066dd213a03f5420d1bf60f150ca7} 
+\index{Engine@{Engine}!start@{start}}
+\index{start@{start}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Engine\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+function that actvates game engine and goes into main loop 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/studia/semestr5/\+Podstawy grafiki komputerowej/\+Laboratrium/2d\+Sfml\+Engine/2d\+Sfml\+Engine/2d\+Sfml\+Engine/\mbox{\hyperlink{_engine_8h}{Engine.\+h}}\item 
+D\+:/studia/semestr5/\+Podstawy grafiki komputerowej/\+Laboratrium/2d\+Sfml\+Engine/2d\+Sfml\+Engine/2d\+Sfml\+Engine/\mbox{\hyperlink{_engine_8cpp}{Engine.\+cpp}}\end{DoxyCompactItemize}

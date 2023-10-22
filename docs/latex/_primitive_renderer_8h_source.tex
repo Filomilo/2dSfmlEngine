@@ -1,0 +1,60 @@
+\doxysection{Primitive\+Renderer.\+h}
+\hypertarget{_primitive_renderer_8h_source}{}\label{_primitive_renderer_8h_source}\index{D:/studia/semestr5/Podstawy grafiki komputerowej/Laboratrium/2dSfmlEngine/2dSfmlEngine/2dSfmlEngine/PrimitiveRenderer.h@{D:/studia/semestr5/Podstawy grafiki komputerowej/Laboratrium/2dSfmlEngine/2dSfmlEngine/2dSfmlEngine/PrimitiveRenderer.h}}
+\mbox{\hyperlink{_primitive_renderer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stack>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <SFML/Graphics/Drawable.hpp>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <SFML/Graphics/RenderTarget.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SFML/Graphics/Vertex.hpp>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_transformable_8h}{Transformable.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_updatable_8h}{Updatable.h}}"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_primitive_renderer}{PrimitiveRenderer}}\ :}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{public}\ sf::Drawable,}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_transformable}{Transformable}},}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_updatable}{Updatable}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00027\ \ \ \ \ sf::PrimitiveType\ \mbox{\hyperlink{class_primitive_renderer_aa28f77dd5cf0722cd1b3c77a17c16827}{renderType}}\ =\ sf::LineStrip;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_primitive_renderer_aa11f5e6eabbd19713c99b434cd5eb4d3}{draw}}(sf::RenderTarget\&\ target,\ sf::RenderStates\ states)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00039\ \ \ \ \ std::vector<sf::Vertex>\ \mbox{\hyperlink{class_primitive_renderer_ad5659ad4e17f29673664b6f7af8f1cfe}{pixels}};}
+\DoxyCodeLine{00043\ \ \ \ \ sf::Color\ \mbox{\hyperlink{class_primitive_renderer_a0796683d15cbf1a5afc21ec9f91f296c}{color}};}
+\DoxyCodeLine{00047\ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{class_primitive_renderer_a4eb3c23a85f6c08a1b43997efe693dc9}{originPoint}};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_primitive_renderer_a9b131e4ee8d64e876bbd2cbce8087800}{addPixel}}(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ sf::Color\ \mbox{\hyperlink{class_primitive_renderer_a0796683d15cbf1a5afc21ec9f91f296c}{color}});}
+\DoxyCodeLine{00062\ \ \ \ \ sf::Color\ \mbox{\hyperlink{class_primitive_renderer_a29fa1629b2beb96ecaad51c867cbf5cf}{get\_color}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_primitive_renderer_a0129f2164773c43530a96bc5ed328175}{set\_color}}(sf::Color\ \mbox{\hyperlink{class_primitive_renderer_a0796683d15cbf1a5afc21ec9f91f296c}{color}});}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00074\ \ \ \ \ sf::PrimitiveType\ \mbox{\hyperlink{class_primitive_renderer_a37786bce719c0e5b7a965a049b65c652}{get\_render\_type}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_primitive_renderer_a32b07f81a977b21324a8f47b6f45e3a3}{set\_render\_type}}(sf::PrimitiveType\ render\_type);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_primitive_renderer_ac8971afed5e77e19facae2a9d36ed897}{centerOrigin}}();}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_primitive_renderer_a028943f67c08aa55d125bc91e969d838}{boundry\_fill}}(sf::Vector2i\ Pos,\ sf::Vector2i\ leftCronerBoundery,\ sf::Vector2i\ rightCornerBoundery,\ sf::Color\ fill\_color,\ sf::Color\ boundry\_color);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_primitive_renderer_a3d73eae30cc9af17fe95e5509159457a}{flood\_fill}}(sf::Vector2i\ Pos,\ sf::Vector2i\ leftCronerBoundery,\ sf::Vector2i\ rightCornerBoundery,\ sf::Color\ fill\_color);}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_primitive_renderer_a646a133c3597a6009449d06e37e82e75}{move}}(sf::Vector2f\ offset)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_primitive_renderer_a05018bd215e38b5ec740032174959762}{scale}}(sf::Vector2f\ offset)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_primitive_renderer_a4a726b4afbd1dd201d3a8a42024657ac}{rotate}}(\textcolor{keywordtype}{float}\ degreee)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_primitive_renderer_aae07efe794ab741204b6793399cf81ef}{update}}(sf::Time\ timeElpased)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00129\ \};}
+\DoxyCodeLine{00130\ }
+
+\end{DoxyCode}

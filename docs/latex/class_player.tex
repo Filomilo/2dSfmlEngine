@@ -1,0 +1,209 @@
+\doxysection{Player Class Reference}
+\hypertarget{class_player}{}\label{class_player}\index{Player@{Player}}
+
+
+a class allowing to add player to game engine  
+
+
+
+
+{\ttfamily \#include $<$Player.\+h$>$}
+
+Inheritance diagram for Player\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_player}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player_acd693d635ff8977e9341a26fde8ed91e}{Player}} (float posX, float posy, float width, float heigth, std\+::string iamge\+Location)
+\begin{DoxyCompactList}\small\item\em constructir for setting up paraameters of player \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_adaf2f163641031a32c4ec707abe6b016}{update\+Tex}} ()
+\begin{DoxyCompactList}\small\item\em functuib that update texture sprite based on a seleciton \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a9330e0dbb2b1f26d4121294a47db4ab8}{move}} (sf\+::\+Vector2f offset) override
+\begin{DoxyCompactList}\small\item\em an overided move function allowing to move obejct and its origin point in a scene \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a439924189385b2ec5dc284e1793300ff}{scale}} (sf\+::\+Vector2f offset) override
+\begin{DoxyCompactList}\small\item\em an overided transform function allowing to scale object from origin point \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_aa62f7c608bd19a31b74e30814a4d345d}{rotate}} (float degreee) override
+\begin{DoxyCompactList}\small\item\em an overided transoform fucntion allowign to rote obejct around its origin \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a1af6f9aedb5327de55b4112d6bb36fc2}{update}} (sf\+::\+Time time\+Elpased) override
+\begin{DoxyCompactList}\small\item\em fucntion that updates playeer positoin based on its velocity \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a3d4b7441ef0f65e927a66df71770d699}{apply\+Velocity}} (sf\+::\+Vector2f vel)
+\begin{DoxyCompactList}\small\item\em fucntion that appllies velocity to object \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a5593abd0d917a480dad1dc3331754f1e}{animate}} (sf\+::\+Time gzme\+Time) override
+\begin{DoxyCompactList}\small\item\em a function that updates sprite seleciton absed on player velocity direction and time since startof engine \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_player_a0ca934f76860c378cd991a8a32f27edd}{draw}} (sf\+::\+Render\+Target \&target, sf\+::\+Render\+States states) const override
+\begin{DoxyCompactList}\small\item\em sfnk draw fucntion overirde rendering for player sprite \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+a class allowing to add player to game engine 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_player_acd693d635ff8977e9341a26fde8ed91e}\label{class_player_acd693d635ff8977e9341a26fde8ed91e} 
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}}
+{\footnotesize\ttfamily Player\+::\+Player (\begin{DoxyParamCaption}\item[{float}]{posX,  }\item[{float}]{posy,  }\item[{float}]{width,  }\item[{float}]{heigth,  }\item[{std\+::string}]{iamge\+Location }\end{DoxyParamCaption})}
+
+
+
+constructir for setting up paraameters of player 
+
+
+\begin{DoxyParams}{Parameters}
+{\em posX} & position of player in x axis \\
+\hline
+{\em posy} & postion on player in y axis \\
+\hline
+{\em width} & width of player sprite \\
+\hline
+{\em heigth} & height of player sprite \\
+\hline
+{\em iamge\+Location} & location of iamge fortexture \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_player_a5593abd0d917a480dad1dc3331754f1e}\label{class_player_a5593abd0d917a480dad1dc3331754f1e} 
+\index{Player@{Player}!animate@{animate}}
+\index{animate@{animate}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{animate()}{animate()}}
+{\footnotesize\ttfamily void Player\+::animate (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{gzme\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+a function that updates sprite seleciton absed on player velocity direction and time since startof engine 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gzme\+Time} & time since engine start \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_animated_object_ab853061b05dff372c9c9cd692f7d054a}{Animated\+Object}}.
+
+\Hypertarget{class_player_a3d4b7441ef0f65e927a66df71770d699}\label{class_player_a3d4b7441ef0f65e927a66df71770d699} 
+\index{Player@{Player}!applyVelocity@{applyVelocity}}
+\index{applyVelocity@{applyVelocity}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{applyVelocity()}{applyVelocity()}}
+{\footnotesize\ttfamily void Player\+::apply\+Velocity (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{vel }\end{DoxyParamCaption})}
+
+
+
+fucntion that appllies velocity to object 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vel} & velocity vector \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_player_a0ca934f76860c378cd991a8a32f27edd}\label{class_player_a0ca934f76860c378cd991a8a32f27edd} 
+\index{Player@{Player}!draw@{draw}}
+\index{draw@{draw}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Player\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Target \&}]{target,  }\item[{sf\+::\+Render\+States}]{states }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+sfnk draw fucntion overirde rendering for player sprite 
+
+\Hypertarget{class_player_a9330e0dbb2b1f26d4121294a47db4ab8}\label{class_player_a9330e0dbb2b1f26d4121294a47db4ab8} 
+\index{Player@{Player}!move@{move}}
+\index{move@{move}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void Player\+::move (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{offset }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+an overided move function allowing to move obejct and its origin point in a scene 
+
+
+\begin{DoxyParams}{Parameters}
+{\em offset} & movement vector that object will move on scene \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_transformable_ab07f4b4335c3eb37d1cb421d6eea8a7d}{Transformable}}.
+
+\Hypertarget{class_player_aa62f7c608bd19a31b74e30814a4d345d}\label{class_player_aa62f7c608bd19a31b74e30814a4d345d} 
+\index{Player@{Player}!rotate@{rotate}}
+\index{rotate@{rotate}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{rotate()}{rotate()}}
+{\footnotesize\ttfamily void Player\+::rotate (\begin{DoxyParamCaption}\item[{float}]{degreee }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+an overided transoform fucntion allowign to rote obejct around its origin 
+
+
+\begin{DoxyParams}{Parameters}
+{\em degreee} & amount of degres to rotate \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_transformable_a8038245962727081b00bb836dba5f093}{Transformable}}.
+
+\Hypertarget{class_player_a439924189385b2ec5dc284e1793300ff}\label{class_player_a439924189385b2ec5dc284e1793300ff} 
+\index{Player@{Player}!scale@{scale}}
+\index{scale@{scale}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{scale()}{scale()}}
+{\footnotesize\ttfamily void Player\+::scale (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{offset }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+an overided transform function allowing to scale object from origin point 
+
+
+\begin{DoxyParams}{Parameters}
+{\em offset} & Vector scale defining scaling values on each axis \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_transformable_acecf0d8dfaa9f65c6c8e2efd6ce686ba}{Transformable}}.
+
+\Hypertarget{class_player_a1af6f9aedb5327de55b4112d6bb36fc2}\label{class_player_a1af6f9aedb5327de55b4112d6bb36fc2} 
+\index{Player@{Player}!update@{update}}
+\index{update@{update}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Player\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{time\+Elpased }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+fucntion that updates playeer positoin based on its velocity 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time\+Elpased} & time since last render \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_updatable_ac0c1fac981f74d445e7837906ec2af7d}{Updatable}}.
+
+\Hypertarget{class_player_adaf2f163641031a32c4ec707abe6b016}\label{class_player_adaf2f163641031a32c4ec707abe6b016} 
+\index{Player@{Player}!updateTex@{updateTex}}
+\index{updateTex@{updateTex}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{updateTex()}{updateTex()}}
+{\footnotesize\ttfamily void Player\+::update\+Tex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+functuib that update texture sprite based on a seleciton 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/studia/semestr5/\+Podstawy grafiki komputerowej/\+Laboratrium/2d\+Sfml\+Engine/2d\+Sfml\+Engine/2d\+Sfml\+Engine/\mbox{\hyperlink{_player_8h}{Player.\+h}}\item 
+D\+:/studia/semestr5/\+Podstawy grafiki komputerowej/\+Laboratrium/2d\+Sfml\+Engine/2d\+Sfml\+Engine/2d\+Sfml\+Engine/\mbox{\hyperlink{_player_8cpp}{Player.\+cpp}}\end{DoxyCompactItemize}

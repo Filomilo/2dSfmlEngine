@@ -10,190 +10,150 @@
 #include "Player.h"
 #include "Polygonal.h"
 
+/**
+ * \brief Main engine class that hadnle all of rendering udpates and obejcts
+ */
 class Engine
 {
 private:
-
+	/**
+	 * \brief with of game screen
+	 */
 	int width;
+	/**
+	 * \brief height of sreen
+	 */
 	int height;
+	/**
+	 * \brief sfml instance of window
+	 */
 	sf::RenderWindow  window;
+	/**
+	 * \brief fps of windoow
+	 */
 	int fps;
+	/**
+	 * \brief state of game enngine, is it running or should stop
+	 */
 	bool isRunning=true;
+	/**
+	 * \brief time since last render
+	 */
 	sf::Time timeElapsed;
+	/**
+	 * \brief overall time since game engine started
+	 */
 	sf::Time timeRunning;
+	/**
+	 * \brief log file location for errors
+	 */
 	const std::string logFile = "Engine.log";
+	/**
+	 * \brief player instnace to be controlered by user
+	 */
 	Player* player;
 
-
+	/**
+	 * \brief list of drwable objects to ber rendered on a screen
+	 */
 	std::list<sf::Drawable*> rednerObjects;
+	/**
+	 * \brief list of updatable objects
+	 */
 	std::list<Updatable*> updatableObjects;
+	/**
+	 * \brief list of animatedable obejct
+	 */
 	std::list<AnimatedObject*> animatedObjects;
 
-		void errorHandler(std::string description)
-	{
-			
-			std::ofstream myfile;
-			myfile.open(logFile);
-			myfile << description;
-			myfile.close();
+	/**
+	 * \brief function that handles error and saves it to log fiile
+	 * \param description description of error
+	 */
+	void errorHandler(std::string description);
 
-			throw std::runtime_error(description);
+	/**
+	 * \brief function for hanflnig even like pressing keyboard keys or closing window
+	 */
+	void eventHandler();
 
-
-	}
-
-	void eventHandler()
-	{
-	
-		//std::cout << sf::Mouse::getPosition().x<<", "<< sf::Mouse::getPosition().y << std::endl;
-
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			
-		if (event.type == sf::Event::Closed) {
-			window.close();
-		}
-		}
-		if (!window.isOpen())
-		{
-			isRunning = false;
-			return;
-		}
-		sf::Vector2f vel;
-		float speedFactor = 100;
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
-		{
-			vel+=sf::Vector2f(speedFactor, 0);
-		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
-		{
-			vel += sf::Vector2f(-speedFactor, 0);
-		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
-		{
-			vel += sf::Vector2f(0, speedFactor);
-		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
-		{
-			vel += sf::Vector2f(0, -speedFactor);
-		}
-		player->applyVelocity(vel * timeElapsed.asSeconds());
-
-		}
-
-	
-	void gameUpdateLogic()
-	{
-		for (AnimatedObject* element : animatedObjects)
-		{
-			element->animate(timeRunning);
-		}
-	}
-	void gameUpdatePhysic()
-	{
-		for (Updatable* element : updatableObjects)
-		{
-			element->update(this->timeElapsed);
-		}
-	}
-
-	void render()
-	{
-
-		this->window.clear(sf::Color(10,10,10));
-
-		for (sf::Drawable* element : this->rednerObjects)
-		{
-			this->window.draw(*element);
-		}
+	/**
+	 * \brief a function to update game logic, here update animiton on animatedable object list
+	 */
+	void gameUpdateLogic();
 
 
-		window.display();
-	}
+	/**
+	 * \brief function to update game physic on udpatable object list
+	 */
+	void gameUpdatePhysic();
 
-	void soudUpdate()
-	{
+	/**
+	 * \brief functino to render every objects in renderables obejct list
+	 */
+	void render();
 
-	}
+	/**
+	 * \brief a function to update sound of game, here empty prepread for future update of engine
+	 */
+	void soudUpdate();
 
-	void gameLoop()
-	{
-		sf::Clock timer;
-		sf::Clock clok;
-		while (isRunning)
-		{
-			timer.restart();
-			eventHandler();
-			gameUpdateLogic();
-			gameUpdatePhysic();
-			render();
-			soudUpdate();
-			this->timeElapsed = timer.getElapsedTime();
-			this->timeRunning = clok.getElapsedTime();
-		//	std::cout << timeElapsed.asMilliseconds() << std::endl;
-		}
-	}
+	/**
+	 * \brief main game loop iterating unttil end of game/system, activating update fucntion and updating time 
+	 */
+	void gameLoop();
 
-
-	void gameCleanUp()
-	{
-		//TODO: memory cleaner
-	}
-
+	/**
+	 * \brief cleanup funciton to delete pointers applied to game engine
+	 */
+	void gameCleanUp();
 
 public:
-	void addAnimatable(AnimatedObject* player)
-	{
-		this->animatedObjects.push_back(player);
-	}
+	/**
+	 * \brief fucniton to add instance cast to AnimtedObject to system for future animation updates
+	 * \param player pointer to Animated object instance
+	 */
+	void addAnimatable(AnimatedObject* player);
 
-	Engine(int width, int height, bool isFullScreen=false)
-	{
-		this->width = width;
-		this->height = height;
-		if(isFullScreen)
-		window.create(sf::VideoMode(width, height), "Engine", sf::Style::Fullscreen);
-		else
-			window.create(sf::VideoMode(width, height), "Engine");
+	/**
+	 * \brief main constrotr to setup window and libraries for game engine
+	 * \param width width of window
+	 * \param height height of window
+	 * \param isFullScreen whethear or not window is in full scren mode
+	 */
+	Engine(int width, int height, bool isFullScreen = false);
 
-		if (!window.isOpen())
-			errorHandler("error: creating window");
+	/**
+	 * \brief function taht actiavtes basic player for game
+	 */
+	void setPlayer();
 
-		player = new Player(width / 2, height / 2, 50, 50,"Assets/sprie.png");
-	
-		
-	}
+	/**
+	 * \brief  function that sets max framerate for game
+	 * \param fps amount of frames per second
+	 */
+	void setFramerate(unsigned int fps);
 
-	void setPlayer()
-	{
-		addRenderObject((sf::Drawable*)player);
-	addUpdatable((Updatable*)player);
-	addAnimatable((AnimatedObject*)player);
-	}
-	void setFramerate(unsigned int fps)
-	{
-		this->fps = fps;
-		this->window.setFramerateLimit(fps);
-	}
+	/**
+	 * \brief function that actvates game engine and goes into main loop
+	 */
+	void start();
 
-	void start()
-	{
-		gameLoop();
-		gameCleanUp();
-	}
+	/**
+	 * \brief function that allows to drawable pointer to drawable list to be render by game engine in loop
+	 * \param object pointer to drawable object to be added
+	 */
+	void addRenderObject(sf::Drawable* object);
 
-
-	void addRenderObject(sf::Drawable* object)
-	{
-		this->rednerObjects.push_back(object);
-	}
-	
-
+	/**
+	 * \brief desctor that activates cleanup for game engine
+	 */
 	~Engine();
-	void addUpdatable(Updatable* pol)
-	{
-		this->updatableObjects.push_back((Updatable*)pol);
-	}
+
+	/**
+	 * \brief function that adds updatable objects tp updatables list for future activaitng in game loop
+	 * \param pol pointer to Updatablle instnace
+	 */
+	void addUpdatable(Updatable* pol);
 };
 
