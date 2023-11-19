@@ -1,3 +1,5 @@
+szkielet podstawoego silnika 2d na szkolne laboratoria
+
 # 2dSfmlEngine
 - do zaimpletownaia boudnery i flood fill
 
