@@ -11,7 +11,8 @@ Line::Line(const sf::Vector2f& beginingTmp, const sf::Vector2f& endTmp, int qual
 
 
     bool isHorizontal = abs(beginingTmp.x - endTmp.x) > abs(beginingTmp.y - endTmp.y);
-    // std::cout << "test\n";
+    // 
+    //  << "test\n";
 
 
     char firstIndex = 0;

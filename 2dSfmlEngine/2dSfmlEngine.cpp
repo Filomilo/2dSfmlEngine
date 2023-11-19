@@ -23,18 +23,12 @@
  */
 int main(int argc, char* argv []) {
 	char choice = 0;
-	if (argc < 2)
-   {
-	   printf("not enough arguments provided \n");
-		std::cin >> choice;
-	
-	 //  return 0;
-   }
-	else
-	{
-		choice = argv[1][0];
-	}
-
+	std::cout << "what would you like to test: " << std::endl;
+	std::cout << "2- lines " << std::endl;
+	std::cout << "3- cirlce nad flood fill " << std::endl;
+	std::cout << "4- transforamtion " << std::endl;
+	std::cout << "5- player" << std::endl;
+	std::cin >> choice;
 
 	Engine* engine = new Engine(1000, 1000);
 	engine->setFramerate(60);
@@ -49,7 +43,6 @@ int main(int argc, char* argv []) {
 		engine->addRenderObject(new Line(sf::Vector2f(600, 1), sf::Vector2f(900, 1000), 10, sf::Color::Red));
 		engine->addRenderObject(new Line(sf::Vector2f(500, 1), sf::Vector2f(500, 1000), 10, sf::Color::Green));
 		engine->addRenderObject(new Line(sf::Vector2f(0, 500), sf::Vector2f(1000, 500), 10, sf::Color::Green));
-
 		engine->addRenderObject(new Point2D(500,500, sf::Color::Yellow));
 		engine->addRenderObject((sf::Drawable*)
 			new BrokenLines({

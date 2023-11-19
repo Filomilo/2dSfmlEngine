@@ -114,22 +114,7 @@ void Engine::gameLoop()
 
 void Engine::gameCleanUp()
 {
-	delete player;
-	player = nullptr;
-	for (auto it = rednerObjects.begin(); it != rednerObjects.end(); ++it) {
-		delete* it;
-	}
-	rednerObjects.clear();
 
-	for (auto it = updatableObjects.begin(); it != updatableObjects.end(); ++it) {
-		delete* it;
-	}
-	updatableObjects.clear();
-
-	for (auto it = animatedObjects.begin(); it != animatedObjects.end(); ++it) {
-		delete* it;
-	}
-	animatedObjects.clear();
 }
 
 

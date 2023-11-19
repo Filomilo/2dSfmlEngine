@@ -68,7 +68,7 @@ void PrimitiveRenderer::draw(sf::RenderTarget& target, sf::RenderStates states) 
     void PrimitiveRenderer::boundry_fill(sf::Vector2i Pos, sf::Vector2i leftCronerBoundery, sf::Vector2i rightCornerBoundery, sf::Color fill_color, sf::Color boundry_color)
     {
 
-        std::cout << "test\n";
+      //  std::cout << "test\n";
         if (this->renderType != sf::Points)
             throw std::runtime_error("Cannot fill non point objects");
         int arraywidth = rightCornerBoundery.x - leftCronerBoundery.x;
@@ -146,7 +146,7 @@ void PrimitiveRenderer::draw(sf::RenderTarget& target, sf::RenderStates states) 
                     pixelsQ.push(sf::Vector2i(pos.x, pos.y + 1));
                 }
             }
-            std::cout << counter << " / " << pixelsQ.size() << std::endl;
+           // std::cout << counter << " / " << pixelsQ.size() << std::endl;
         }
 
         //array[50+50*arraywidth] = sf::Vertex(sf::Vector2f(50,50), sf::Color::Red);
@@ -175,7 +175,7 @@ void PrimitiveRenderer::draw(sf::RenderTarget& target, sf::RenderStates states) 
   
     void PrimitiveRenderer::flood_fill(sf::Vector2i Pos, sf::Vector2i leftCronerBoundery, sf::Vector2i rightCornerBoundery, sf::Color fill_color)
     {
-        std::cout << "test\n";
+       // std::cout << "test\n";
         if (this->renderType != sf::Points)
             throw std::runtime_error("Cannot fill non point objects");
         int arraywidth = rightCornerBoundery.x - leftCronerBoundery.x;
@@ -256,7 +256,7 @@ void PrimitiveRenderer::draw(sf::RenderTarget& target, sf::RenderStates states) 
                     pixelsQ.push(sf::Vector2i(pos.x, pos.y + 1));
                 }
             }
-            std::cout << counter << " / " << pixelsQ.size() << std::endl;
+          //  std::cout << counter << " / " << pixelsQ.size() << std::endl;
         }
 
         //array[50+50*arraywidth] = sf::Vertex(sf::Vector2f(50,50), sf::Color::Red);
@@ -321,8 +321,8 @@ void PrimitiveRenderer::draw(sf::RenderTarget& target, sf::RenderStates states) 
 
     void PrimitiveRenderer::update(sf::Time timeElpased) 
     {
-        std::cout << originPoint.x << ", " << originPoint.y << std::endl;
-        // move(sf::Vector2f(100* timeElpased.asSeconds(), 100* timeElpased.asSeconds()));
-        // scale(sf::Vector2f(1.02 , 1.01));
+       // std::cout << originPoint.x << ", " << originPoint.y << std::endl;
+        move(sf::Vector2f(10* timeElpased.asSeconds(), 10* timeElpased.asSeconds()));
+         scale(sf::Vector2f(1+0.1* timeElpased.asSeconds(), 1.00));
         rotate(0.1 * timeElpased.asSeconds());
     }
